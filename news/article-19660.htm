@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-19660.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript将数字转换为数十，数百，数千等方法详解</title>
+        <meta name="description" content="我们需要编写一个函数，给定一个数字，例如123，它将输出一个数组- [100,20,3] 基本上，该函数应返回一个数组，该数组包含该函数作为自变量的数字中存在的所有数字的位置值。 我们可以通过使用递归" />
+        <link rel="icon" href="__ADDON__/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">JavaScript将数字转换为数十，数百，数千等方法详解</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<p>我们需要编写一个函数，给定一个数字，例如123，它将输出一个数组-</p> <pre>[100,20,3]</pre> <p>基本上，该函数应返回一个数组，该数组包含该函数作为自变量的数字中存在的所有数字的位置值。</p> <p>我们可以通过使用递归方法来解决此问题。</p> <h2>示例</h2> <p>以下是代码-</p> <pre>const&nbsp;num&nbsp;=&nbsp;123; const&nbsp;placeValue&nbsp;=&nbsp;(num,&nbsp;res&nbsp;=&nbsp;[],&nbsp;factor&nbsp;=&nbsp;1)&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;if(num){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;val&nbsp;=&nbsp;(num&nbsp;%&nbsp;10)&nbsp;*&nbsp;factor; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.unshift(val); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;placeValue(Math.floor(num&nbsp;/&nbsp;10),&nbsp;res,&nbsp;factor&nbsp;*&nbsp;10); &nbsp;&nbsp;&nbsp;}; &nbsp;&nbsp;&nbsp;return&nbsp;res; }; console.log(placeValue(num));</pre> <p>输出结果</p> <p>这将在控制台中产生以下输出-</p> <pre>[&nbsp;100,&nbsp;20,&nbsp;3&nbsp;]</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19202.htm">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></p>
+                                        <p>下一个：<a href="/news/article-19661.htm">骨架屏技术讲解以及如何在Vue中实现骨架屏</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-16-free-node-subscribe.htm" title="10月16日→19.7M/S|2024年最新免费节点Clash Node订阅链接地址">10月16日→19.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-node-subscribe.htm" title="10月11日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址">10月11日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-node-share-links.htm" title="11月10日→18.5M/S|2024年最新免费节点Clash Node订阅链接地址">11月10日→18.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-free-high-speed-nodes.htm" title="9月24日→23M/S|2024年最新免费节点Clash Node订阅链接地址">9月24日→23M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-subscribe-node.htm" title="9月14日→18M/S|2024年最新免费节点Clash Node订阅链接地址">9月14日→18M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-node-share-links.htm" title="10月14日→22.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月14日→22.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-26-free-subscribe-node.htm" title="9月26日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址">9月26日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share-links.htm" title="11月16日→22M/S|2024年最新免费节点Clash Node订阅链接地址">11月16日→22M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-free-node-subscribe-links.htm" title="9月23日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址">9月23日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
