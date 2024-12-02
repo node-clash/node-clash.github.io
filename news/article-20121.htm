@@ -2,13 +2,13 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://node-clash.github.io/news/article-19660.htm" />
+        <link rel="canonical" href="https://node-clash.github.io/news/article-20121.htm" />
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JavaScript将数字转换为数十，数百，数千等方法详解</title>
-        <meta name="description" content="我们需要编写一个函数，给定一个数字，例如123，它将输出一个数组- [100,20,3] 基本上，该函数应返回一个数组，该数组包含该函数作为自变量的数字中存在的所有数字的位置值。 我们可以通过使用递归" />
+    <title>vue项目在打包时,如何去掉所有的console.log输出_vue.js_</title>
+        <meta name="description" content="目录  vue打包去掉所有的console.log输出  安装插件 添加配置  vue npm run build 打包去掉console和警告  其实就两行代码就可以了      vue打包去掉所有" />
         <link rel="icon" href="__ADDON__/img/node_clash/favicon.ico" type="image/x-icon"/>
     <!-- CSS Files -->
     <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
@@ -96,7 +96,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="title">JavaScript将数字转换为数十，数百，数千等方法详解</h1>
+                    <h1 class="title">vue项目在打包时,如何去掉所有的console.log输出_vue.js_</h1>
                     <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
                 </div>
             </div>
@@ -107,10 +107,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                                      				  				  				<p>我们需要编写一个函数，给定一个数字，例如123，它将输出一个数组-</p> <pre>[100,20,3]</pre> <p>基本上，该函数应返回一个数组，该数组包含该函数作为自变量的数字中存在的所有数字的位置值。</p> <p>我们可以通过使用递归方法来解决此问题。</p> <h2>示例</h2> <p>以下是代码-</p> <pre>const&nbsp;num&nbsp;=&nbsp;123; const&nbsp;placeValue&nbsp;=&nbsp;(num,&nbsp;res&nbsp;=&nbsp;[],&nbsp;factor&nbsp;=&nbsp;1)&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;if(num){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;val&nbsp;=&nbsp;(num&nbsp;%&nbsp;10)&nbsp;*&nbsp;factor; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.unshift(val); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;placeValue(Math.floor(num&nbsp;/&nbsp;10),&nbsp;res,&nbsp;factor&nbsp;*&nbsp;10); &nbsp;&nbsp;&nbsp;}; &nbsp;&nbsp;&nbsp;return&nbsp;res; }; console.log(placeValue(num));</pre> <p>输出结果</p> <p>这将在控制台中产生以下输出-</p> <pre>[&nbsp;100,&nbsp;20,&nbsp;3&nbsp;]</pre> <div></div> 			                <div class="clearfix"></div>
+                                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">vue打包去掉所有的console.log输出</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">安装插件</a></li> <li><a href="#_lab2_0_1" rel="nofollow">添加配置</a></li> </ul> <li><a href="#_label1" rel="nofollow">vue npm run build 打包去掉console和警告</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_2" rel="nofollow">其实就两行代码就可以了 </a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>vue打包去掉所有的console.log输出</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>安装插件</h3> <div class="ay1code"> <pre class="brush:js;">npm install babel-plugin-transform-remove-console --save-dev  </pre> </div> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>添加配置</h3> <p>安装babel-plugin-transform-remove-console开发依赖，然后在项目的babel.config.js的plugin中添加节点。再build就不会有console警告了。</p> <p>如下配置无论在开发环境还是生产环境都会去掉所有的console输出语句。</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/bf3eabf99bef8834802f792bc3f816be.jpg"></p> <p>但是babel.config.js文件是全局共享的，无论是开发阶段还是生产阶段，都会移除所有的console，我们想在开发阶段保留console该怎么做呢？</p> <p>如下：</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/a51f26a5eaef4d661576b7eb44bcfee4.jpg"></p> <p>代码：</p> <div class="ay1code"> <pre class="brush:js;">// 项目在发布时需要用到的babel插件数组  const proPlugins = [];  // 如果当前是生产环境，则使用去掉console的插件  if (process.env.NODE_ENV === 'production') {      proPlugins.push('transform-remove-console');  }  module.exports = {    presets: [      '@vue/cli-plugin-babel/preset'    ],    plugins:[      ...proPlugins    ]  }  </pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>vue npm run build 打包去掉console和警告</h2> <p>在本地开发环境中肯定都会去打印一些数据，但是你如果上传到正式环境呢这些肯定不能再有了，但是你也不能一行一行的去注释掉吧，这样很麻烦所以vue在配置的时候其实是有这个配置的但是需要你自己去配置文件里面修改一下，这样才能方便你的开发二可以达到偷懒的地步。下面就说一下这个配置吧</p> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>其实就两行代码就可以了 </h3> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220416/b5f4993b63a28c13a6fa38ef5ffdf28c.jpg"></p> <p>在build下面的webpack.prod.conf.js里面找到这里添加上</p> <div class="ay1code"> <pre class="brush:js;">drop_console: true,  pure_funcs: [‘console.log']</pre> </div> <p>这两句就可以完美解决了。 </p> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-19202.htm">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></p>
-                                        <p>下一个：<a href="/news/article-19661.htm">骨架屏技术讲解以及如何在Vue中实现骨架屏</a></p>
+                                        <p>上一个：<a href="/news/article-20119.htm">C语言字符串、字符数组、字符指针</a></p>
+                                        <p>下一个：<a href="/news/article-20576.htm">@Transactional 详解</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -120,16 +120,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share.htm" title="10月1日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址">10月1日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-12-free-node-subscribe-links.htm" title="9月12日→21M/S|2024年最新免费节点Clash Node订阅链接地址">9月12日→21M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-15-free-node-subscribe-links.htm" title="9月15日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址">9月15日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-node-subscribe-links.htm" title="9月16日→22.6M/S|2024年最新免费节点Clash Node订阅链接地址">9月16日→22.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-node-subscribe-links.htm" title="11月2日→20.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月2日→20.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-21-free-node-subscribe-links.htm" title="10月21日→21.6M/S|2024年最新免费节点Clash Node订阅链接地址">10月21日→21.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19202.htm" title="2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-node-subscribe-links.htm" title="11月8日→22.4M/S|2024年最新免费节点Clash Node订阅链接地址">11月8日→22.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19661.htm" title="骨架屏技术讲解以及如何在Vue中实现骨架屏">骨架屏技术讲解以及如何在Vue中实现骨架屏</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-subscribe-node.htm" title="10月22日→20.6M/S|2024年最新免费节点Clash Node订阅链接地址">10月22日→20.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-node-share.htm" title="12月3日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址">12月3日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-10-6-free-subscribe-node.htm" title="10月6日→20M/S|2024年最新免费节点Clash Node订阅链接地址">10月6日→20M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-node-subscribe.htm" title="10月11日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址">10月11日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-21-node-share.htm" title="9月21日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址">9月21日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-high-speed-nodes.htm" title="10月10日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月10日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-18-node-share-links.htm" title="9月18日→22M/S|2024年最新免费节点Clash Node订阅链接地址">9月18日→22M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19201.htm" title="我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？">我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？</a></li>
                     </ul>
     </div>
 </div>
