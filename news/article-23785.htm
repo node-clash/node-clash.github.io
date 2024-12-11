@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-23785.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue解决vant组件样式失效问题</title>
+        <meta name="description" content="vue项目中引入vant组件，若发现vant组件样式失效，通常有以下几种解决方法：  方法一：引入全局样式    在引入vant组件的地方或者全局引入vant组件所有的样式，引入方法为：在vue引入v" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">vue解决vant组件样式失效问题</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>vue项目中引入vant组件，若发现vant组件样式失效，通常有以下几种解决方法：</p> <ul> <li>方法一：引入全局样式</li> </ul> <p>  在引入vant组件的地方或者全局引入vant组件所有的样式，引入方法为：在vue引入vant的页面中，添加以下代码：</p> <pre><code class="prism language-javascript"><span class="token keyword">import</span><span class="token string">'vant/lib/index.css'</span></code></pre> <p>这样可以引入vant全部样式，不过通常我们可以按需引入，如法二，局部引入部分样式即可。</p> <ul> <li>方法二：局部引入样式</li> </ul> <p>  顾名思义，我们需要使用哪个组件，就引入哪个组件样式即可，比如我们只使用按钮组件，则只需要引入按钮样式，如下:</p> <pre><code class="prism language-javascript"><span class="token keyword">import</span><span class="token string">'vant/lib/button/style'</span></code></pre> <ul> <li>方法三：插件自动引入</li> </ul> <p>  babel-plugin-import 是一款 babel 插件，它会在编译过程中将 import 的写法自动转换为按需引入的方式。第一步需要安装插件：</p> <pre><code class="prism language-javascript"># 安装插件 npm i babel<span class="token operator">-</span>plugin<span class="token operator">-</span><span class="token keyword">import</span><span class="token operator">-</span><span class="token constant">D</span></code></pre> <p>第二步在***.babelrc***或***babel.config.js***的对应位置添加如下代码，重启之后即可生效。</p> <pre><code class="prism language-javascript"><span class="token comment">// 在.babelrc 中添加配置</span><span class="token comment">// 注意：webpack 1 无需设置 libraryDirectory</span><span class="token punctuation">{<!-- --></span><span class="token string">"plugins"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"import"</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span><span class="token string">"libraryName"</span><span class="token punctuation">:</span><span class="token string">"vant"</span><span class="token punctuation">,</span><span class="token string">"libraryDirectory"</span><span class="token punctuation">:</span><span class="token string">"es"</span><span class="token punctuation">,</span><span class="token string">"style"</span><span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token comment">// 对于使用 babel7 的用户，可以在 babel.config.js 中配置</span> module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{<!-- --></span>   plugins<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'import'</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span>       libraryName<span class="token punctuation">:</span><span class="token string">'vant'</span><span class="token punctuation">,</span>       libraryDirectory<span class="token punctuation">:</span><span class="token string">'es'</span><span class="token punctuation">,</span>       style<span class="token punctuation">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">'vant'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23318.htm">领养宠物的定义是什么意思呀（领养宠物的概念）</a></p>
+                                        <p>下一个：<a href="/news/article-23786.htm">宠物领养协议书范本 简单版图片下载 宠物领养协议书范本 简单版图片下载大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-node-share.htm" title="11月1日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月1日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-high-speed-nodes.htm" title="11月11日→19.6M/S|2024年最新免费节点Clash Node订阅链接地址">11月11日→19.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-node-share-links.htm" title="10月31日→18M/S|2024年最新免费节点Clash Node订阅链接地址">10月31日→18M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-subscribe-node.htm" title="11月19日→18M/S|2024年最新免费节点Clash Node订阅链接地址">11月19日→18M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-22-node-share-links.htm" title="9月22日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">9月22日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-node-share-links.htm" title="12月5日→18.7M/S|2024年最新免费节点Clash Node订阅链接地址">12月5日→18.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23785.htm" title="vue解决vant组件样式失效问题">vue解决vant组件样式失效问题</a></li>
+                        <li class="py-2"><a href="/news/article-19202.htm" title="2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-subscribe-node.htm" title="10月17日→23M/S|2024年最新免费节点Clash Node订阅链接地址">10月17日→23M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-node-subscribe.htm" title="9月20日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址">9月20日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
