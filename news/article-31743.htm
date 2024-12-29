@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-31743.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>【SpringBoot】核心依赖和自动配置</title>
+        <meta name="description" content="之前介绍了springboot是有多么的好，那么，我们现在通过一个小demo来看他是有多么的强大！    &nbsp; &nbsp; &nbsp; &nbsp; 我们可以知道一般的项目引入了的基本包和" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">【SpringBoot】核心依赖和自动配置</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-size:18px;">之前介绍了springboot是有多么的好，那么，我们现在通过一个小demo来看他是有多么的强大！</span></p> <p><span style="font-size:18px;"><br /></span></p> </h1> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">&nbsp; &nbsp; &nbsp; &nbsp; 我们可以知道一般的项目引入了的基本包和<span style="font-size:18px;">sprin<span style="font-size:18px;">g</span>一些连接池，再加上几个配置文件还有应用服务器（或者web服务器），就可以直接运行起来了。那么springboot要如何做呢？</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;">首先就是核心依赖了：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"></span></span></p> <pre><code class="language-html">&lt;parent&gt; 	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; 	&lt;version&gt;1.5.2.RELEASE&lt;/version&gt; &lt;/parent&gt;</code></pre> <p>这个parent是springboot最最核心的引入，所有的配置都在里面，并且是springboot项目必须引入的。</p> <p><span style="font-size:18px;"><span style="font-size:18px;">当然现在都是web项目居多，我们还需要引入一个需要的依赖：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"></span></span></p> <pre><code class="language-html">&lt;dependency&gt; 	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>然后可以的话还可以引入一个插件：</p> <p><span style="font-size:18px;"><span style="font-size:18px;"></span></span></p> <pre><code class="language-html">&lt;plugin&gt; 	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; 	&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt;</code></pre> <p><span style="font-size:18px;"><span style="font-size:18px;">引入这些东西之后，我们可以在一个包中新建一个类，然后写入以下代码：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"></span></span></p> <pre><code class="language-java">@Controller @SpringBootApplication @Configuration public class HelloApplication {          @RequestMapping("hello")     @ResponseBody     public String hello(){         return "hello world！";     }          public static void main(String[] args) {         SpringApplication.run(HelloApplication.class, args);     }  }</code></pre> <p>之后直接用javaApplication 的run方式，我们就可以直接将springboot的这个项目run起来，可以在控制台看到：</p> <p><span style="font-size:18px;"><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/9867904cc517c03c63ca74cce617e0ee.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;">然后我们在浏览器中输入：http://localhost:8080/hello</span></span></p> <p><span style="font-size:18px;">就可以看到如下页面：</span></p> <p><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/05f9ba558b614aab09abb906bbff436f.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></p> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">这样，我们就启动了一个简单的springboot项目。</span></p> <p><span style="font-size:18px;"><br /></span></p> </h1> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">&nbsp; &nbsp; &nbsp; &nbsp; 我们可以在项目中看到，其实我们就是写了一个类，为什么连tomcat都不用，就可以直接启动一个web程序呢？这一切都是从springboot的配置说起。</span></p> <p><span style="font-size:18px;">&nbsp; &nbsp; &nbsp; &nbsp; 还记得我们引入pom了一个spring-boot-starter-web了么，这个就是spring所依赖的web项目模板，我们可以在maven管理器的依赖中找到这些已经默认加载好的东西：</span></p> <p><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/a3c705ebfd24c574b1757f8ff7462a5b.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></p> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">&nbsp; &nbsp; &nbsp; &nbsp; 我们可以直观的看到，tomcat，hibernate，还有一些web项目需要用的东西全部都引入到了项目中，在项目启动的时候就是调用的他们，然后我们就相当于吧tomcat也启动了一样的感觉，为我们的开发配置省了不少事情。</span></p> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">然后我们再来看我们写的这个类，为什么可以直接用web来启动呢，根据上一篇文章的介绍，java的配置方式起到了很强的作用，那就是我们可以利用注解去轻易的配置一些我们想要配置的东西，springboot就是利用了这一点。我们可以看到我们的类上面除了java的@Configuration之外，还有一个是springboot的配置项@SpringBootApplication，这个注解的引入，就默认为我们自动的配置了一些常用的配置。</span></p> <p><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/a3c705ebfd24c574b1757f8ff7462a5b.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></p> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;">那么，它都自动为我们配置了什么呢？我们可以找到library的jar包引入，找到一个springboot的autoconfigure来看一下：</span></p> <p><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/e26a32ea96d4a4fe37e38fd22a526fb2.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></p> <p><span style="font-size:18px;"><br /></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;">我们展开看一下会发现很多熟悉的东西：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/b90174fc73582b5e896e0e7cbc347d57.jpg" alt="【SpringBoot】核心依赖和自动配置"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/62a68501bd873cd375a31afe722c0e00.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;">&nbsp; &nbsp; &nbsp; &nbsp; 是不是看到了很多熟悉的身影呢，我们可以在每个包下面都找到一个带有AutoConfigure的类，这就是用java配置方式写的默认配置：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><img decoding="async" src="http://img.555519.xyz/uploads/20221120/2eb5dc5b9c5336b2c9db4923e1957e17.jpg" alt="【SpringBoot】核心依赖和自动配置"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"><br /></span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;">当然，这些都是默认的配置，我们如果想要自己配置一个组件要怎么把默认的配置取消呢？其实很简单，因为每个springboot项目都必须有一个核心的带有@SpringBootApplication注解的类作为入口，所以我们只需要在这个注解上消除这个配置类的引入就可以了，例如：</span></span></p> <p><span style="font-size:18px;"><span style="font-size:18px;"></span></span></p> <pre><code class="language-java">@Controller @SpringBootApplication(exclude = {MongoAutoConfiguration.class, KafkaAutoConfiguration.class}) @Configuration public class HelloApplication {          @RequestMapping("hello")     @ResponseBody     public String hello(){         return "hello world！";     }          public static void main(String[] args) {         SpringApplication.run(HelloApplication.class, args);     }  }</code></pre> <p>通过这样用exclude的方式就把mongo和kafka的自动配置去掉了，我们就可以自己进行配置了。</div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31742.htm">第2章 图灵的计算王国</a></p>
+                                        <p>下一个：<a href="/news/article-32224.htm">动物疫苗和人体疫苗的区别是什么呢图片（动物疫苗对人体有害吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19202.htm" title="2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-high-speed-nodes.htm" title="11月30日→21.2M/S|2024年最新免费节点Clash Node订阅链接地址">11月30日→21.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share-links.htm" title="12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址">12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-node-subscribe-links.htm" title="12月29日→20.4M/S|2024年最新免费节点Clash Node订阅链接地址">12月29日→20.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21500.htm" title="动物医院取什么名字好听一点（动物医院牌子）">动物医院取什么名字好听一点（动物医院牌子）</a></li>
+                        <li class="py-2"><a href="/news/article-21946.htm" title="动物医院许可证怎么办理 动物医院许可证怎么办理流程">动物医院许可证怎么办理 动物医院许可证怎么办理流程</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-subscribe-node.htm" title="12月11日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址">12月11日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23318.htm" title="领养宠物的定义是什么意思呀（领养宠物的概念）">领养宠物的定义是什么意思呀（领养宠物的概念）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-node-share-links.htm" title="10月5日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址">10月5日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-30321.htm" title="动物疫苗的作用（动物疫苗是有毒有害吗）">动物疫苗的作用（动物疫苗是有毒有害吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

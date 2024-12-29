@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-31742.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第2章 图灵的计算王国</title>
+        <meta name="description" content="图灵机与计算理论是人工智能乃至整个计算机科学的理论基础。一切计算过程都可以用图灵机仿真。因此，无论如何人工智能都无法逃脱图灵机可计算理论的范畴。本章从图灵可计算理论的基础触发，忽略掉一切实用的工程细节" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">第2章 图灵的计算王国</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>图灵机与计算理论是人工智能乃至整个计算机科学的理论基础。一切计算过程都可以用图灵机仿真。因此，无论如何人工智能都无法逃脱图灵机可计算理论的范畴。本章从图灵可计算理论的基础触发，忽略掉一切实用的工程细节，来讨论计算机可以做和不可以做的事情。从这些讨论中，我们可以站在一定的理论高度来窥探人工智能的前进方向。</p> <h2 id="图灵机">图灵机</h2> <p>计算是一个司空见惯，古已有之的概念。例如，我国古代发明的算盘就是一种计算的机器。</p> <p>图灵机模型既直观又简洁，因此人们普遍接受了图灵机模型作为计算理论的标准模型。</p> <h2 id="计算">计算</h2> <p>如果我们把一切都看作信息，那么广义上讲，计算就是对信息的变换。</p> <p>计算就是某个系统完成了一次从输入到输出的变换。</p> <h2 id="计算的组合">计算的组合</h2> <p>从最简单的逻辑运算操作最简单的二进制信息出发，我们其实可以构造任意的图灵机。</p> <h2 id="征服无限的方法">征服无限的方法</h2> <p>运用有限的规则应对无限可能情况的方法。</p> <h2 id="计算等价性">计算等价性</h2> <p>具体地说，如果A能够仿真B,并且B也能仿真A，那么A和B就是计算等价的。计算等价性是非常强有力的，因为它揭示了在我们这个宇宙中某种非常普遍的规律。</p> <p>所有与加法运算算法计算等价的计算机程序都是一回事儿，因而加法算法这个东西是永恒而独立的。</p> <p>看！我们在宇宙中找到某种永恒性了，这种永恒性反映了宇宙规律中某种本质上的美。计算等价性就和能量守恒定律一样具有这种高级的对称性，我甚至觉得计算等价性要比能量守恒定律更加深刻。因为无论如何能量守恒定律仍然刻画了物理系统的某种属性，而计算等价性刻画的则是非常广泛的信息系统之间的对称性，而一切系统都可以被抽象为信息系统，甚至是物质世界。所以，计算等价性是跨越所有系统之间某种高级对称的，永恒的，美的东西。</p> <h2 id="意义">意义</h2> <p>图灵机之间是可以相互仿真的。</p> <p>这三句话具有相同的意义，而根据前面的叙述，能够相互仿真的图灵机是计算等价的。而这种计算等价性就像前面说到的加法规则一样是独立于计算系统和执行机构的。</p> <p>所谓语言的意义，就是执行这个语言系统的计算等价性。</p> <h2 id="万能图灵机">万能图灵机</h2> <p>前面已经讲述了仿真的概念，那么自然会产生这样一个问题：是否存在一台图灵机能够仿真所有其他的图灵机呢？答案是存在的。这种能够仿真其他所有图灵机的图灵机叫做通用图灵机，也就是我所说的“万能图灵机”。我之所以这么称呼它，是因为这种机器在图灵计算这个范畴内是万能的。</p> <h2 id="编码">编码</h2> <p>什么是编码呢?你可以理解为对某一堆事物进行编号。</p> <h2 id="自食其尾">自食其尾</h2> <p>既然万能图灵机能够仿真任何一台图灵机的动作，那么它能不能仿真它自己呢？答案是肯定的。我们首先看到万能图灵机也是图灵机，也有固定的输入，输出，状态的集合，固定的程序，因而它也能被编码。于是我们就可以把它自己的编码信息输入给它自己。这就好像一条蛇咬到了自己的尾巴自食其尾就会产生怪圈，虽然我们现在还没有看到任何不好的征兆，然而在下一节里面，我们将会看到这种怪圈会产生什么样的结论。而且在第四章我们也会看到，其实这个怪圈是和康托尔对角线法则，哥德尔定理有关的。</p> <p>图灵机一旦能够把程序作为数据来读写，就会诞生很多有趣的事情。首先，存在某种图灵机可以完成自我复制。事实上，计算机病毒就是这样干的。</p> <p>有了万能图灵机，还能得到很多有趣的结论，比如假设有一大群图灵机，让它们随机地相互碰撞，当碰到一块的时候，一个图灵机可以读入另一个图灵机的编码，并且修改这台图灵机的编码。那么这样一个图灵机“汤”中会产生什么呢？美国圣塔菲研究所的芳塔纳完成了这个实验，并得出了惊人的结论：在这样的系统中会诞生自我维护的类似生命的复杂组织，而且这些组织能够进一步联合起来构成更大的组织！</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31217.htm">动物医院大众点评怎么做（动物医院大众点评评语）</a></p>
+                                        <p>下一个：<a href="/news/article-31743.htm">【SpringBoot】核心依赖和自动配置</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-node-share.htm" title="10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32706.htm" title="Spring Security核心组件之安全上下文">Spring Security核心组件之安全上下文</a></li>
+                        <li class="py-2"><a href="/news/article-27045.htm" title="宠物粮食品牌都有什么名字呢女生（宠物粮食品牌起名大全）">宠物粮食品牌都有什么名字呢女生（宠物粮食品牌起名大全）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="12月15日→19.4M/S|2024年最新免费节点Clash Node订阅链接地址">12月15日→19.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24253.htm" title="宠物店寄养服务（宠物店寄养服务海报展示）">宠物店寄养服务（宠物店寄养服务海报展示）</a></li>
+                        <li class="py-2"><a href="/news/article-31743.htm" title="【SpringBoot】核心依赖和自动配置">【SpringBoot】核心依赖和自动配置</a></li>
+                        <li class="py-2"><a href="/news/article-31216.htm" title="Unity实现简单的对象池_在线工具">Unity实现简单的对象池_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-19660.htm" title="JavaScript将数字转换为数十，数百，数千等方法详解">JavaScript将数字转换为数十，数百，数千等方法详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
