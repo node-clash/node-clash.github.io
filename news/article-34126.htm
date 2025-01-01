@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-34126.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 实现弹窗关闭后刷新效果_vue.js</title>
+        <meta name="description" content="目录  vue弹窗关闭后刷新效果  问题 解决  关闭或刷新vue文件弹出提示框     vue弹窗关闭后刷新效果  问题 列表点击进入详情时弹窗内容重新赋值，但是修改后未点击保存再打开同一个弹窗，数" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">vue 实现弹窗关闭后刷新效果_vue.js</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">vue弹窗关闭后刷新效果</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">问题</a></li> <li><a href="#_lab2_0_1" rel="nofollow">解决</a></li> </ul> <li><a href="#_label1" rel="nofollow">关闭或刷新vue文件弹出提示框</a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>vue弹窗关闭后刷新效果</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>问题</h3> <p>列表点击进入详情时弹窗内容重新赋值，但是修改后未点击保存再打开同一个弹窗，数据是关闭前的样子。</p> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>解决</h3> <p>在双击时间里定义一个时间戳，每次点击传过去的值，在弹窗watch里接收时间戳再赋值。关闭页面清空对象。</p> <p><strong>列表页：</strong></p> <div class="ay1code"> <pre class="brush:js;">this.timestamp=new Date().getTime();</pre> </div> <p><strong>弹窗详情页：</strong></p> <div class="ay1code"> <pre class="brush:js;">props: {timestamp:Number}  watch: {     timestamp:{       //深度监控的数据获取    }  }</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>关闭或刷新vue文件弹出提示框</h2> <p>在vue文件中加入如下代码：</p> <p>我将如下代码加入到了app.vue中</p> <div class="ay1code"> <pre class="brush:js;">beforeRouteLeave(to, from, next) {  const answer = window.confirm(“当前页面数据未保存，确定要离开？”);  if (answer) {  next();  } else {  next(false);  }  },  mounted() {  var _this=this;  window.onbeforeunload = function(e) {  if (_this.$route.fullPath == ‘/index/uploadImages') {  e = e || window.event;  // 兼容IE8和Firefox 4之前的版本  if (e) {  e.returnValue = “关闭提示”;  }  // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+  return “关闭提示”;  } else {  window.onbeforeunload = null;  }  };  }</pre> </div> <p>编译运行，在浏览器刷新/关闭，弹出以下提示框</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/189ef88a42c1952be7ea7495213d267a.jpg"></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/787b769ccdca82e707e1ffc4c9e3b246.jpg"></p> <p><strong>注意：</strong>上面的方法生效的前题是，打开该网页后，需要鼠标点击一下网页，让网页获取焦点，然后再关闭或刷新! 若打开后不点击页面直接关闭或刷新不会触发该方法。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33659.htm">动物接种疫苗的简报怎么写（动物注射疫苗简报）</a></p>
+                                        <p>下一个：<a href="/news/article-34129.htm">宠物店领养协议书怎么写范文（宠物店领养是什么意思）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-27047.htm" title="动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）">动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-node-share.htm" title="12月17日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月17日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-node-subscribe.htm" title="12月25日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月25日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="11月18日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月18日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share.htm" title="10月1日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址">10月1日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-subscribe-node.htm" title="12月11日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址">12月11日→21.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27973.htm" title="自己开个宠物店需要准备什么条件（自己开宠物店需要什么证）">自己开个宠物店需要准备什么条件（自己开宠物店需要什么证）</a></li>
+                        <li class="py-2"><a href="/news/article-32224.htm" title="动物疫苗和人体疫苗的区别是什么呢图片（动物疫苗对人体有害吗）">动物疫苗和人体疫苗的区别是什么呢图片（动物疫苗对人体有害吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-node-share.htm" title="10月2日→22.7M/S|2024年最新免费节点Clash Node订阅链接地址">10月2日→22.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-20-free-node-subscribe.htm" title="9月20日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址">9月20日→22.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
