@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-35678.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小程序自适应尺寸单位rpx和flex弹性布局的使用详解</title>
+        <meta name="description" content="我们之前知道一个小程序由四个页面组成，但是我们打包运行到手机上的时候，首页屏幕大小分辨率不一样的时候就会有内容显示的差别，所以小程序提供了自适应尺寸的单位rpx，rpx会根据屏幕分辨率进行自适应大小。" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">小程序自适应尺寸单位rpx和flex弹性布局的使用详解</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>我们之前知道一个小程序由四个页面组成，但是我们打包运行到手机上的时候，首页屏幕大小分辨率不一样的时候就会有内容显示的差别，所以小程序提供了自适应尺寸的单位rpx，rpx会根据屏幕分辨率进行自适应大小。</p> <p>我们可以看到官方文档的描素：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/ac1515e968ae7d2806fc401167f2fa60.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 这里注意：小程序规定屏幕宽度是750rpx。</p> <p>这里有一点，设计师在设计小程序UI的时候最好是根据iphone6的尺寸来进行设计，我们从图中可以看到，iphone6的情况下 1rpx = 0.5px，而如果是iphone5的情况下 1rpx=0.42px，iphone6s 1rpx = 0.552px，这就会影响到我们在编写小程序页面过程中的单位换算，所以选择iphone6的尺寸进行设计是最好的，也是最利于我们进行开发的。</p> <p>更多rpx详情可以查看微信官方文档：<br /> https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</p> <h3><a id="flex_13" rel="nofollow"></a>flex布局</h3> <p>我们通常在开发网页的时候，要实现以下效果怎么弄呢？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/8798cc476c2a0e6e7de8c02fa321ccf6.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 按照以往网页的逻辑，编写几个li然后float浮动？但是在小程序不能这么写，我们要使用到flex弹性布局，下面具体来操作一下。</p> <p>1.首先我们要编写一个最外层的view，然后编写四个item的view，在分别编写item里面的上半部分和下半部分</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sort"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sort_box"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">3</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">3</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">4</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">4</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span></code></pre> <p>这里要注意啊，小程序没有div，都是使用view进行编写的。</p> <p>我们在写完四个view之后就可以看到以下效果<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/e44048f5fd8313eacfc00ffd90ad40ae.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 一个垂直的item列表。</p> <p>但是我们要把他变成向右水平排列，怎么操作呢？</p> <p>2.设置最外层sort的css属性，首先我们要把sort_box view display设置成flex，设置这个让我们的sort_box容器变成弹性布局;然后设置flex的方向为水平方向row，然后在设置每个item之间的边距justify-content: space-around，效果图：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/10d10cb52b57c7b5a08b465b89f28b42.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 我们可以看到我们的四个item都成水平排列了，但是还没有达到上面的那种效果，所以我们还要编写item里面子项的wxss属性。</p> <p>3.首先我们要设置sort_box 下item的字体居中</p> <pre><code class="prism language-javascript"><span class="token punctuation">.</span>sort_box<span class="token punctuation">.</span>item<span class="token punctuation">{<!-- --></span>   text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/a9356e22cbd95bd9fdad8695cef51624.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 4.设置sort_box 下 item子项下的icon的属性，设置宽高，背景颜色，字体水平居中垂直居中，设置圆角百分之五十</p> <pre><code class="prism language-javascript"><span class="token punctuation">.</span>sort_box<span class="token punctuation">.</span>item<span class="token punctuation">.</span>icon<span class="token punctuation">{<!-- --></span>   width<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   height<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   background<span class="token operator">-</span>color<span class="token punctuation">:</span> blue<span class="token punctuation">;</span>   line<span class="token operator">-</span>height<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span>   border<span class="token operator">-</span>radius<span class="token punctuation">:</span><span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>然后我们就可以实现上面的效果了</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220604/382bf93a3889defc9f137c6be3e371ad.jpg" alt="小程序自适应尺寸单位rpx和flex弹性布局的使用详解"><br /> 虽然代码很简单，这里还是贴一下index.wxml和index.wxss的代码：</p> <p>index.wxml</p> <pre><code class="prism language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>miniprogram<span class="token operator">/</span>pages<span class="token operator">/</span>index<span class="token operator">/</span>index<span class="token punctuation">.</span>wxml<span class="token operator">--</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>miniprogram<span class="token operator">/</span>pages<span class="token operator">/</span>index<span class="token operator">/</span>index<span class="token punctuation">.</span>wxml<span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"box"</span><span class="token operator">&gt;</span>Hello Word<span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sort"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sort_box"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">3</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">3</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>view<span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"icon"</span><span class="token operator">&gt;</span>后<span class="token number">4</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span>text<span class="token operator">&gt;</span>后端<span class="token number">4</span><span class="token operator">&lt;</span><span class="token operator">/</span>text<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>view<span class="token operator">&gt;</span></code></pre> <p>index.wxss</p> <pre><code class="prism language-javascript"><span class="token comment">/* miniprogram/pages/index/index.wxss */</span><span class="token punctuation">.</span>box<span class="token punctuation">{<!-- --></span>   width<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   height<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   background<span class="token operator">-</span>color<span class="token punctuation">:</span> red<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">.</span>sort_box<span class="token punctuation">{<!-- --></span>   display<span class="token punctuation">:</span> flex<span class="token punctuation">;</span>   flex<span class="token operator">-</span>direction<span class="token punctuation">:</span> row<span class="token punctuation">;</span>   margin<span class="token punctuation">:</span><span class="token number">0</span><span class="token number">30</span>rpx<span class="token punctuation">;</span>   justify<span class="token operator">-</span>content<span class="token punctuation">:</span> space<span class="token operator">-</span>around<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">.</span>sort_box<span class="token punctuation">.</span>item<span class="token punctuation">{<!-- --></span>   text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">.</span>sort_box<span class="token punctuation">.</span>item<span class="token punctuation">.</span>icon<span class="token punctuation">{<!-- --></span>   width<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   height<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   background<span class="token operator">-</span>color<span class="token punctuation">:</span> blue<span class="token punctuation">;</span>   line<span class="token operator">-</span>height<span class="token punctuation">:</span><span class="token number">100</span>rpx<span class="token punctuation">;</span>   text<span class="token operator">-</span>align<span class="token punctuation">:</span> center<span class="token punctuation">;</span>   border<span class="token operator">-</span>radius<span class="token punctuation">:</span><span class="token number">50</span><span class="token operator">%</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>这样就可以实现我们的弹性布局了。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35155.htm">被猫抓伤后怎么判断感没感染图片（被猫抓出血怎么判断没事）</a></p>
+                                        <p>下一个：<a href="/news/article-35679.htm">长沙市宠物领养（长沙哪里有宠物领养）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-17-free-subscribe-node.htm" title="9月17日→21.8M/S|2024年最新免费节点Clash Node订阅链接地址">9月17日→21.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe-links.htm" title="11月5日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月5日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32225.htm" title="动物医院诊室的岗位职责怎么写（动物医院诊疗活动范围）">动物医院诊室的岗位职责怎么写（动物医院诊疗活动范围）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-node-share.htm" title="11月25日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月25日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35679.htm" title="长沙市宠物领养（长沙哪里有宠物领养）">长沙市宠物领养（长沙哪里有宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-node-share-links.htm" title="12月9日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月9日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-29-free-high-speed-nodes.htm" title="9月29日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址">9月29日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="11月4日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月4日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-25184.htm" title="宠物粮食批发市场在哪里啊多少钱一个（宠物粮食批发市场在哪里啊多少钱一个）">宠物粮食批发市场在哪里啊多少钱一个（宠物粮食批发市场在哪里啊多少钱一个）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-node-share-links.htm" title="11月29日→20.9M/S|2024年最新免费节点Clash Node订阅链接地址">11月29日→20.9M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
