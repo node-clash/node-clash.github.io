@@ -111,6 +111,7 @@
                   				  				  				<div id="content_views" class="htmledit_views"> <p>首先需注意的是numpy和tensor的维度排列顺序不一样，这里拿一张图片的shape举例：</p> <pre><code>to_tensor = torchvision.transforms.ToTensor() img = cv2.imread("sample.jpg") img_tensor = to_tensor(img) print(type(img))  # &lt;class 'numpy.ndarray'&gt; print(img.shape)  # (450, 500, 3) print(type(img_tensor))  # &lt;class 'torch.Tensor'&gt; print(img_tensor.shape)  # torch.Size([3, 450, 500]) </code></pre> <p>如果想改变数组内元素的排列顺序，torch和numpy都自带reshape方法：</p> <pre><code># 展平操作 print(np.reshape(img, (1, 1, -1)).shape)  # (1, 1, 675000) print(torch.reshape(img_tensor, (1, 1, -1)).shape)  # torch.Size([1, 1, 675000]) # 注意-1的含义是让计算机自己计算这里的值（因为元素总数是不会变的，该例3*450*500 = 675000） # 但“-1”至多出现一次，也很好理解，假若两个位置需要计算机计算（-1），显然是无法做到的 </code></pre> <p>增加（减少）维度，以numpy为例（tensor同用法）：</p> <pre><code># 减少维度 img_1 = img[:, :, 1]  # 截取 img_2 = np.reshape(img, (450, -1))  # reshape方法必须保证总量不变 print(img_1.shape)  # (450, 500) print(img_2.shape)  # (450, 1500)  # 增加维度 a = np.array((3, 2, 3)) b = a[:, None, None] c = np.reshape(a, (3, 1, -1)) print(a.shape)  # (3,) print(b.shape)  # (3, 1, 1) print(c.shape)  # (3, 1, 1)</code></pre> <p>实例应用：</p> <p>在图像标准化处理中假设我们计算得到RGB的均值(mean)为（127， 127， 127）&nbsp;标准差std为（8， 8， 8），那么我们接下来要对整个图片各个位置的RGB进行(img - mean) / std&nbsp;计算，显然是不能直接计算的，因为原图是个三维矩阵，而我们计算得到的均值和标准差都是一维的（包含三个值），所以在计算过程中需要对mean和std进行增加维度操作。</p> <pre><code># 举例 img = np.random.randint(0, 255, (2, 2, 3)) mean = np.array((127, 127, 127)) std = np.array((8, 8, 8)) img_result = (img - mean[None, None, :]) / std[None, None, :] print("处理前：", img) # [[[177   1 231] #   [  1 109 203]] #  #  [[177 135 146] #   [ 66  89 122]]] print("处理后", img_result) # [[[  6.25  -15.75   13.   ] #   [-15.75   -2.25    9.5  ]] #  #  [[  6.25    1.      2.375] #   [ -7.625  -4.75   -0.625]]] </code></pre> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-38483.htm">win11系统如何安装藏文输入法</a></p>
+                                        <p>下一个：<a href="/news/article-38968.htm">动物医院公示栏设计图片高清（动物医院诊室设计图）</a></p>
                                     </div>
                                 </div>
                 <div class="col-md-3">
@@ -120,16 +121,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-node-share-links.htm" title="10月29日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址">10月29日→18.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-38484.htm" title="numpy和tensor类型更改（增加或减少）参数维度（reshape）">numpy和tensor类型更改（增加或减少）参数维度（reshape）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
                         <li class="py-2"><a href="/news/article-30810.htm" title="广州宠物收容中心电话地址（广州什么地方可以收容宠物）">广州宠物收容中心电话地址（广州什么地方可以收容宠物）</a></li>
-                        <li class="py-2"><a href="/news/article-28433.htm" title="厦门哪里领养宠物（厦门有没有领养宠物）">厦门哪里领养宠物（厦门有没有领养宠物）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-node-subscribe-links.htm" title="11月24日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月24日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19202.htm" title="2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></li>
-                        <li class="py-2"><a href="/news/article-19201.htm" title="我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？">我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-node-share.htm" title="10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-27-node-share-links.htm" title="12月27日→21.3M/S|2024年最新免费节点Clash Node订阅链接地址">12月27日→21.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-28434.htm" title="动物疫苗的使用方法及注意事项视频教程全集 动物疫苗的使用方法及注意事项视频教程全集下载">动物疫苗的使用方法及注意事项视频教程全集 动物疫苗的使用方法及注意事项视频教程全集下载</a></li>
+                        <li class="py-2"><a href="/news/article-26577.htm" title="动物疫苗企业20强（动物疫苗龙头股排名）">动物疫苗企业20强（动物疫苗龙头股排名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-node-share-links.htm" title="11月18日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月18日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-node-share-links.htm" title="11月10日→18.5M/S|2024年最新免费节点Clash Node订阅链接地址">11月10日→18.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32224.htm" title="动物疫苗和人体疫苗的区别是什么呢图片（动物疫苗对人体有害吗）">动物疫苗和人体疫苗的区别是什么呢图片（动物疫苗对人体有害吗）</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-12-1-free-high-speed-nodes.htm" title="12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share-links.htm" title="12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址">12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24719.htm" title="成都宠物托运公司哪家比较好用（成都宠物托运公司排名）">成都宠物托运公司哪家比较好用（成都宠物托运公司排名）</a></li>
                     </ul>
     </div>
 </div>
@@ -141,7 +142,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
