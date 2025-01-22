@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-43447.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>springcloud  Hystrix 及 Feign与Hystrix结合 使用方法</title>
+        <meta name="description" content="Hystrix 产生背景 &nbsp; &nbsp; &nbsp; &nbsp;在微服务架构中，我们将系统拆分成了很多服务单元，各单元的应用间通过服务注册 与订阅的方式互相依赖。由于每个单元都在不同的" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-43447.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="springcloud  Hystrix 及 Feign与Hystrix结合 使用方法" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/9ee547b136924d46adf79c4c9c2228ec.webp" />
+        <meta property="og:release_date" content="2025-01-20T07:12:08" />
+    <meta property="og:updated_time" content="2025-01-20T07:12:08" />
+        <meta property="og:description" content="Hystrix 产生背景 &nbsp; &nbsp; &nbsp; &nbsp;在微服务架构中，我们将系统拆分成了很多服务单元，各单元的应用间通过服务注册 与订阅的方式互相依赖。由于每个单元都在不同的" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springcloud  Hystrix 及 Feign与Hystrix结合 使用方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">springcloud  Hystrix 及 Feign与Hystrix结合 使用方法</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p><strong>Hystrix 产生背景</strong><br /> &nbsp; &nbsp; &nbsp; &nbsp;在微服务架构中，我们将系统拆分成了很多服务单元，各单元的应用间通过服务注册 与订阅的方式互相依赖。由于每个单元都在不同的进程中运行，依赖通过远程调用的方式执行，这样就有可能因为网络原因或是依赖服务自身问题出现调用故障或延迟，而这些问 题会直接导致调用方的对外服务也出现延迟，若此时调用方的请求不断增加，最后就会因 等待出现故障的依赖方响应形成任务积压，最终导致自身服务的瘫痪。</p> <p>&nbsp; &nbsp; &nbsp; 为了解决这样的问题，产生了断路器等一系列的服务保护机。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp;断路器模式源于 Martin Fowler 的 Circuit Breaker 一文。“断路器”本身是一种开关装置，用于在电路上保护线路过载，当线路中有电器发生短路时，“断路器”能够及时切断故障电路，防止发生过载、发热甚至起火等严重后果。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 在分布式架构中，断路器模式的作用也是类似的，当某个服务单元发生故障（类似用电器发生短路）之后，通过断路器的故障监控（类似熔断保险丝），向调用方返回一个错误响应，而不是长时间的等待。这样就不会使得线程因调用故障服务被长时间用不释放，避免了故障在分布式系统中的蔓延。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;针对上述问题，SpringCloudHystrix实现了断路器、线程隔离等一系列服务保护功能。&nbsp;它也是基于Netflix的开源框架Hystrix实现的，该框架的目标在于通过控制那些访问远程系统、服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。Hystrix具备服&nbsp;务降级、服务熔断、线程和信号隔离、请求缓存、请求合并以及服务监控等强大功能。接下来，我们就从一个简单示例开始对Spring Cloud Hystrix的学习与使用。</p> <p><strong>1、添加依赖包</strong></p> <pre class="has"><code class="language-html">&lt;!-- 加入断路器依赖 --&gt; &lt;dependency&gt;    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;    &lt;version&gt;2.0.2.RELEASE&lt;/version&gt; &lt;/dependency&gt;</code></pre> <p>基础配置如下：</p> <pre class="has"><code class="language-bash"># 设置熔断超时时间 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=10000 # 关闭Hystrix功能（不要和上面的配置一起使用） feign.hystrix.enabled=false # 关闭熔断功能 hystrix.command.default.execution.timeout.enabled=false</code></pre> <p>如果针对某一个接口配置，比如/hello接口，可以按照如下写法：</p> <pre class="has"><code class="language-bash"># 设置熔断超时时间 hystrix.command.hello.execution.isolation.thread.timeoutInMilliseconds=10000 # 关闭熔断功能 hystrix.command.hello.execution.timeout.enabled=false</code></pre> <h3><strong>Hystrix单独使用:</strong></h3> <pre class="has"><code class="language-java">@HystrixCommand(fallbackMethod = "helloFallBack") // 注解指定发生错误时的回调方法 public String helloService() {     return restTemplate.getForObject("http://producer/hello", String.class); }  public String  helloFallBack() {     return "Error occurred ！"; }</code></pre> <h3><strong>Feign结合Hystrix使用:</strong></h3> <p>在Feign中如何配置Hystrix的服务降级呢？很简单，新建一个类，实现HelloService接口，如下：</p> <pre class="has"><code class="language-java">@Component public class HelloServiceFallback implements HelloService {     @Override     public String hello() {         return "hello error";     }      @Override     public String hello(String name) {         return "error " + name;     }      @Override     public Book hello(String name, String author, Integer price) {         Book book = new Book();         book.setName("error");         return book;     }      @Override     public String hello(Book book) {         return "error book";     } }</code></pre> <p>这里方法实现的逻辑都是相应的服务降级逻辑。然后在@FeignClient注解中指定服务降级处理类即可，如下：</p> <pre class="has"><code class="language-java">@FeignClient(value = "hello-service",fallback = HelloServiceFallback.class) public interface HelloService {     @RequestMapping("/hello")     String hello();      @RequestMapping(value = "/hello1", method = RequestMethod.GET)     String hello(@RequestParam("name") String name);      @RequestMapping(value = "/hello2", method = RequestMethod.GET)     Book hello(@RequestHeader("name") String name, @RequestHeader("author") String author, @RequestHeader("price") Integer price);      @RequestMapping(value = "/hello3", method = RequestMethod.POST)     String hello(@RequestBody Book book); }</code></pre> <p><strong>如果不想某个Feign Client使用Hystrix的话，可以使用如下配置：</strong></p> <pre class="has"><code class="language-java">@FeignClient(name = "eureka-client-demo", configuration = DisableHystrix.class) public interface DemoFeignClient {     @GetMapping("/hello")     public String hello(); }  @Configuration public class DisableHystrix {     @Bean     @Scope("prototype")     public Feign.Builder feignBuilder() {         return Feign.builder();     } }</code></pre> <p>此时我们只启动eureka-server和feign-consumer，然后访问相应的接口，可以看到如下结果（<strong>注意这里需要在application.properties中配置feign.hystrix.enabled=true，新版本(Dalston.SR3)的Spring Cloud Feign默认是关闭了Hystrix功能的</strong>）：</p> <p style="text-align:center;"><img decoding="async" alt="" class="has" src="http://img.555519.xyz/uploads3/20220723/41acad6ab76f876f207fe00f54008593.jpg"></p> <h2 id="articleHeader2">其他配置</h2> <p>Spring Cloud Feign支持对请求和响应进行GZIP压缩，以提高通信效率，配置方式如下：</p> <pre class="has"><code class="language-bash"># 配置请求GZIP压缩 feign.compression.request.enabled=true # 配置响应GZIP压缩 feign.compression.response.enabled=true # 配置压缩支持的MIME TYPE feign.compression.request.mime-types=text/xml,application/xml,application/json # 配置压缩数据大小的下限 feign.compression.request.min-request-size=2048</code></pre> <p>Feign为每一个FeignClient都提供了一个feign.Logger实例，我们可以在配置中开启日志，开启方式很简单，分两步：</p> <p><strong>第一步：application.properties中配置日志输出</strong><br /> application.properties中配置如下内容，表示设置日志输出级别：</p> <pre class="has"><code class="language-bash"># 开启日志 格式为logging.level.+Feign客户端路径 logging.level.org.sang.HelloService=debug</code></pre> <p><strong>第二步：入口类中配置日志Bean</strong></p> <p>入口类中配置日志Bean，如下：</p> <pre class="has"><code class="language-java">@Bean Logger.Level feignLoggerLevel() {     return Logger.Level.FULL; }</code></pre> <p>如此之后，控制台就会输出请求的详细日志。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-42949.htm">猫领养协议书范本图片（领养猫签领养协议有什么套路）</a></p>
+                                        <p>下一个：<a href="/news/article-43448.htm">动物疫苗生产厂家排名榜前十名图片（动物疫苗品牌）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe.htm" title="10月18日→18.6M/S|2024年最新免费节点Clash Node订阅链接地址">10月18日→18.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-subscribe-node.htm" title="11月21日→18.3M/S|2024年最新免费节点Clash Node订阅链接地址">11月21日→18.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-node-share.htm" title="10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月28日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-node-share-links.htm" title="12月14日→20.8M/S|2024年最新免费节点Clash Node订阅链接地址">12月14日→20.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43940.htm" title="哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）">哈尔滨农大动物医院哪个大夫好一点啊（哈尔滨农业大学动物医学）</a></li>
+                        <li class="py-2"><a href="/news/article-33171.htm" title="Django请求与响应">Django请求与响应</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-node-subscribe.htm" title="12月31日→19.1M/S|2025年最新免费节点Clash Node订阅链接地址">12月31日→19.1M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-node-share-links.htm" title="12月4日→20.3M/S|2024年最新免费节点Clash Node订阅链接地址">12月4日→20.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21035.htm" title="苏州宠物领养中心领养要钱吗（苏州宠物狗领养）">苏州宠物领养中心领养要钱吗（苏州宠物狗领养）</a></li>
+                        <li class="py-2"><a href="/news/article-43448.htm" title="动物疫苗生产厂家排名榜前十名图片（动物疫苗品牌）">动物疫苗生产厂家排名榜前十名图片（动物疫苗品牌）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
