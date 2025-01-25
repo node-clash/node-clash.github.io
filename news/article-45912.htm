@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-45912.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>linux服务器磁盘满了的处理方法</title>
+        <meta name="description" content="今天连接oracle数据库报错，重启数据库显示磁盘满了，记录一下我的处理方法： &nbsp; &nbsp; &nbsp; 1.df -h命令：通过df -h命令查看硬盘的使用情况：发现vda3挂载点已" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-45912.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="linux服务器磁盘满了的处理方法" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/9ee547b136924d46adf79c4c9c2228ec.webp" />
+        <meta property="og:release_date" content="2025-01-25T09:52:52" />
+    <meta property="og:updated_time" content="2025-01-25T09:52:52" />
+        <meta property="og:description" content="今天连接oracle数据库报错，重启数据库显示磁盘满了，记录一下我的处理方法： &nbsp; &nbsp; &nbsp; 1.df -h命令：通过df -h命令查看硬盘的使用情况：发现vda3挂载点已" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="linux服务器磁盘满了的处理方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                                                        <a href="/" class="logo">
+                                        <span>Clash Node</span>
+                                    </a>
+                                                                    </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">linux服务器磁盘满了的处理方法</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>今天连接oracle数据库报错，重启数据库显示磁盘满了，记录一下我的处理方法：</p> <p>&nbsp; &nbsp; &nbsp; 1.df -h命令：通过df -h命令查看硬盘的使用情况：发现vda3挂载点已经基本满了[这个还是处理后的，之前到达49G了]</p> <p><img decoding="async" alt="" class="has" height="97" src="http://img.555519.xyz/uploads3/20220605/e7292b0e52f6132a53194b7ac5a2321d.jpg"></p> <p>&nbsp; &nbsp; &nbsp; 2.知道了是硬盘满了的问题，name下一步就是开始查找服务器中的大文件，从根目录开始查找，通过du -h --max-depth=1命令，发现是home文件夹占用空间较多</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="483" src="http://img.555519.xyz/uploads3/20220605/ce0203c1a991d17bec026c9c5dbd2007.jpg"></p> <p>cd ./home,然后&nbsp;通过du -h --max-depth=1命令依次往下查找，最后发现是oracle占用空间较大</p> <p><img decoding="async" alt="" class="has" height="93" src="http://img.555519.xyz/uploads3/20220605/ce55d1cb1e7d2ade8174a94f2fa30bc1.jpg"></p> <p>再去仔细查找发现log文件以及listener.org占用较多，定位到了问题，下面就是解决问题：</p> <p>按照上述的查找大文件的步骤定位发现/home/oracle/app/oracle/diag/tnslsnr/WH-CS-116/listener/alert文件夹下面有超过3G的log文件，久远的log一般用不到，可根据自己的情况删除，通过下述命令删除该文件夹下指定天数之前的文件（下面展示的是删除5天以前的log文件），</p> <p>find . -mtime +5 -type f -name "*" -exec rm -f {} \;</p> <p>完成上述操作，释放掉部分存储空间，</p> <p>但是我检查发现/home/oracle/app/oracle/diag/tnslsnr/WH-CS-116/listener/trace这个文件加下面有一个listener.log的文件，而且很大</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="202" src="http://img.555519.xyz/uploads3/20220605/98166f180ab3501ec4b6ce3730fc022e.jpg"></p> <p>网上搜索发现这个文件过大会导致数据库sql的速度变慢，也会导致plsql等可视化工具连接不成功，下面记录一下处理方法：</p> <p>1.重命名文件：mv listener.log listener.old20180917</p> <p>2.重新开启listener日志，会自动生成一个新的listener.log的文件：lsnrctl set log_status on</p> <p>3.等到没问题之后，就可以删除listener.old20180917这个文件了</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-45447.htm">太原领养狗狗地方在那 太原领养狗狗地方在那里</a></p>
+                                        <p>下一个：<a href="/news/article-45913.htm">动物疫苗的概念和分类是什么 动物疫苗的概念和分类是什么意思</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37013.htm" title="猫一般多久做一次体内体外驱虫（猫咪多久做一次体内体外驱虫）">猫一般多久做一次体内体外驱虫（猫咪多久做一次体内体外驱虫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe.htm" title="11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">11月20日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-34604.htm" title="宠物寄养协议书范本免费版大全（宠物寄养协议有法律效力吗）">宠物寄养协议书范本免费版大全（宠物寄养协议有法律效力吗）</a></li>
+                        <li class="py-2"><a href="/news/article-43939.htm" title="动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）">动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）</a></li>
+                        <li class="py-2"><a href="/news/article-22867.htm" title="梦见自己抱着别的女人睡觉（梦见自己抱着别的女人睡觉好不好）">梦见自己抱着别的女人睡觉（梦见自己抱着别的女人睡觉好不好）</a></li>
+                        <li class="py-2"><a href="/news/article-39970.htm" title="动物诊所英语 动物诊所英语怎么说">动物诊所英语 动物诊所英语怎么说</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-node-share.htm" title="1月8日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址">1月8日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-free-node-subscribe-links.htm" title="1月19日→18.1M/S|2025年最新免费节点Clash Node订阅链接地址">1月19日→18.1M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40462.htm" title="领养宠物狗的流程视频（领养宠物狗的流程视频播放）">领养宠物狗的流程视频（领养宠物狗的流程视频播放）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-subscribe-node.htm" title="12月2日→20.4M/S|2024年最新免费节点Clash Node订阅链接地址">12月2日→20.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
