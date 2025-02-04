@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://node-clash.github.io/news/article-24252.htm" />
@@ -10,6 +10,33 @@
     <title>使用 shell 脚本自动获取发版指标数据</title>
         <meta name="description" content="问题背景 大一点的公司都会建立一套规章流程来避免低级错误，例如合入代码前必需经过同行评审；上线前必需提测且通过 QA 验证；全量前必需经过 1%、5%、10%、20%、50% 的灰度过程。尤其是最后一" />
         <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-24252.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="使用 shell 脚本自动获取发版指标数据" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/e5fb2dcd4da7e5cd4efda1b7e4f65580.webp" />
+        <meta property="og:release_date" content="2024-12-11T09:53:35" />
+    <meta property="og:updated_time" content="2024-12-11T09:53:35" />
+        <meta property="og:description" content="问题背景 大一点的公司都会建立一套规章流程来避免低级错误，例如合入代码前必需经过同行评审；上线前必需提测且通过 QA 验证；全量前必需经过 1%、5%、10%、20%、50% 的灰度过程。尤其是最后一" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用 shell 脚本自动获取发版指标数据">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
     <!-- CSS Files -->
     <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
     <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
@@ -121,16 +148,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-1-node-share.htm" title="11月1日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月1日→18.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-high-speed-nodes.htm" title="11月11日→19.6M/S|2024年最新免费节点Clash Node订阅链接地址">11月11日→19.6M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-high-speed-nodes.htm" title="10月27日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址">10月27日→21.7M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-30-free-high-speed-nodes.htm" title="9月30日→18.9M/S|2024年最新免费节点Clash Node订阅链接地址">9月30日→18.9M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-10-free-high-speed-nodes.htm" title="10月10日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址">10月10日→20.5M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-18-node-share-links.htm" title="9月18日→22M/S|2024年最新免费节点Clash Node订阅链接地址">9月18日→22M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-23-node-share.htm" title="12月23日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">12月23日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-27-free-subscribe-node.htm" title="9月27日→23M/S|2024年最新免费节点Clash Node订阅链接地址">9月27日→23M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-31216.htm" title="Unity实现简单的对象池_在线工具">Unity实现简单的对象池_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-27047.htm" title="动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）">动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/news/article-44432.htm" title="广州动物救助站（广州动物救助站电话地址）">广州动物救助站（广州动物救助站电话地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-node-share.htm" title="12月10日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月10日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-free-subscribe-node.htm" title="12月22日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址">12月22日→19.2M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-subscribe-node.htm" title="1月17日→22.8M/S|2025年最新免费节点Clash Node订阅链接地址">1月17日→22.8M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-node-share-links.htm" title="1月18日→21M/S|2025年最新免费节点Clash Node订阅链接地址">1月18日→21M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-47384.htm" title="java.net.SocketTimeoutException: 异常">java.net.SocketTimeoutException: 异常</a></li>
+                        <li class="py-2"><a href="/news/article-38968.htm" title="动物医院公示栏设计图片高清（动物医院诊室设计图）">动物医院公示栏设计图片高清（动物医院诊室设计图）</a></li>
+                        <li class="py-2"><a href="/news/article-32706.htm" title="Spring Security核心组件之安全上下文">Spring Security核心组件之安全上下文</a></li>
+                        <li class="py-2"><a href="/news/article-26127.htm" title="被猫抓伤出血了需要打针吗（被猫抓伤出血了需要打针吗要打多久）">被猫抓伤出血了需要打针吗（被猫抓伤出血了需要打针吗要打多久）</a></li>
                     </ul>
     </div>
 </div>
@@ -142,19 +169,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

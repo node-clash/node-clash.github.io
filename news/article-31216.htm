@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://node-clash.github.io/news/article-31216.htm" />
@@ -10,6 +10,33 @@
     <title>Unity实现简单的对象池_在线工具</title>
         <meta name="description" content="先说说为什么要使用对象池 在Unity游戏运行时，经常需要生成一些物体，例如子弹、敌人等。虽然Unity中有Instantiate()方法可以使用，但是在某些情况下并不高效。特别是对于那些需要大量生成" />
         <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-31216.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Unity实现简单的对象池_在线工具" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/74ff8bede5d57990b69de6dd4d998945.webp" />
+        <meta property="og:release_date" content="2024-12-26T00:10:24" />
+    <meta property="og:updated_time" content="2024-12-26T00:10:24" />
+        <meta property="og:description" content="先说说为什么要使用对象池 在Unity游戏运行时，经常需要生成一些物体，例如子弹、敌人等。虽然Unity中有Instantiate()方法可以使用，但是在某些情况下并不高效。特别是对于那些需要大量生成" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Unity实现简单的对象池_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
     <!-- CSS Files -->
     <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
     <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
@@ -121,16 +148,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-30810.htm" title="广州宠物收容中心电话地址（广州什么地方可以收容宠物）">广州宠物收容中心电话地址（广州什么地方可以收容宠物）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-node-subscribe.htm" title="12月8日→19.3M/S|2024年最新免费节点Clash Node订阅链接地址">12月8日→19.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19201.htm" title="我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？">我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-free-node-subscribe-links.htm" title="12月7日→20.9M/S|2024年最新免费节点Clash Node订阅链接地址">12月7日→20.9M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-25184.htm" title="宠物粮食批发市场在哪里啊多少钱一个（宠物粮食批发市场在哪里啊多少钱一个）">宠物粮食批发市场在哪里啊多少钱一个（宠物粮食批发市场在哪里啊多少钱一个）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-node-subscribe-links.htm" title="11月8日→22.4M/S|2024年最新免费节点Clash Node订阅链接地址">11月8日→22.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-node-share-links.htm" title="11月12日→20.3M/S|2024年最新免费节点Clash Node订阅链接地址">11月12日→20.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-free-node-subscribe.htm" title="12月25日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月25日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-subscribe-node.htm" title="10月17日→23M/S|2024年最新免费节点Clash Node订阅链接地址">10月17日→23M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-subscribe-node.htm" title="11月13日→21.4M/S|2024年最新免费节点Clash Node订阅链接地址">11月13日→21.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43939.htm" title="动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）">动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）</a></li>
+                        <li class="py-2"><a href="/news/article-27047.htm" title="动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）">动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-high-speed-nodes.htm" title="12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-47880.htm" title="猫为什么不能打狂犬（猫为什么不能打狂犬疫苗针）">猫为什么不能打狂犬（猫为什么不能打狂犬疫苗针）</a></li>
+                        <li class="py-2"><a href="/news/article-27974.htm" title="动物疫苗类型有几种（动物疫苗有哪几种）">动物疫苗类型有几种（动物疫苗有哪几种）</a></li>
+                        <li class="py-2"><a href="/news/article-39970.htm" title="动物诊所英语 动物诊所英语怎么说">动物诊所英语 动物诊所英语怎么说</a></li>
+                        <li class="py-2"><a href="/news/article-23318.htm" title="领养宠物的定义是什么意思呀（领养宠物的概念）">领养宠物的定义是什么意思呀（领养宠物的概念）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-24-node-share-links.htm" title="12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址">12月24日→21M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44433.htm" title="狗狗领养平台公众号（狗狗领养平台公众号有哪些）">狗狗领养平台公众号（狗狗领养平台公众号有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-19661.htm" title="骨架屏技术讲解以及如何在Vue中实现骨架屏">骨架屏技术讲解以及如何在Vue中实现骨架屏</a></li>
                     </ul>
     </div>
 </div>
@@ -142,19 +169,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">22</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

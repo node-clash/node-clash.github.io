@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-49903.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>python代码抒写开kerberos安全的kafka生产者消费</title>
+        <meta name="description" content="艰辛三天的时间，终于走通了。 前提说明： 针对kafka server开启了 kerberos认证，协议使用的GSSAPI协议。 经常用java代码写消费者，java代码支持GSSAPI协议，可以通过" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-49903.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="python代码抒写开kerberos安全的kafka生产者消费" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/123f7e72008e181022f1777edc84387f.webp" />
+        <meta property="og:release_date" content="2025-02-02T09:27:07" />
+    <meta property="og:updated_time" content="2025-02-02T09:27:07" />
+        <meta property="og:description" content="艰辛三天的时间，终于走通了。 前提说明： 针对kafka server开启了 kerberos认证，协议使用的GSSAPI协议。 经常用java代码写消费者，java代码支持GSSAPI协议，可以通过" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python代码抒写开kerberos安全的kafka生产者消费">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">python代码抒写开kerberos安全的kafka生产者消费</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>艰辛三天的时间，终于走通了。</p> <h3><strong>前提说明：</strong></h3> <p>针对kafka server开启了 kerberos认证，协议使用的GSSAPI协议。</p> <p>经常用java代码写消费者，java代码支持GSSAPI协议，可以通过代码去登陆用户。</p> <p>python也支持gssapi协议，但是需要通过kerberos客户端去登陆用户。</p> <p>阅读源码--conn.py，发现是支持 GSSAPI的。</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="324" src="http://img.555519.xyz/uploads/20221230/b91e354dccb3265368d5aea1f2a2241f.jpg"></p> <p>&nbsp;</p> <p>操作系统：&nbsp;&nbsp;CentOS Linux release 7.6.1810 (Core)，非硬性要求</p> <h3>1、python环境的搭建</h3> <p>1.1、系统本身自带了---Python 2.7.5版本</p> <p>1.2、升级下python到3.7.0</p> <p>1.2.1下载&nbsp;wget <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz"  rel="nofollow">https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz</a></p> <p>1.2.2、在安装包中有一个README的文件，里面有写如何安装</p> <p>tar Jxvf Python-3.7.0.tar.xz</p> <p>cd Python-3.7.0</p> <p>./configure --prefix=/usr/local/python3</p> <p>make &amp;&amp; make install</p> <p>1.2.3、软连接到 python3命令</p> <p>ln -s /usr/local/python3/bin/python3.7 /usr/local/bin/python3</p> <p>到这里python安装完成。&nbsp; 使用 python3 -V 查看版本。&nbsp;</p> <p>1.2.4、软连接到pip命令</p> <p>ln -s /usr/local/python3/bin/pip3.7 /usr/local/bin/pip</p> <p>1.2.5、升级 pip</p> <p>pip install --upgrade pip</p> <h3>2、kerberos认证客户端的准备</h3> <p>2.1、安装</p> <p>yum install -y krb5-devel.x86_64</p> <p>2.2、验证</p> <p>krb5-config</p> <p>kinit</p> <p>klist 命令的是否可用</p> <h3>3、python-kafka生产者代码</h3> <p>3.1、代码运行需要导入 pip install gssapi ; pip install kafka-python</p> <p>从kdc服务端拿来 keytab密钥以及用户。kinit 登陆用户，记得修改 /etc下面的 krb5.conf文件 ，和服务器的 krb5.conf保持一致。</p> <pre class="has"><code>from kafka import KafkaProducer  from kafka.errors import KafkaError  import os  class Kafka_Producer():  &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, kafkahost, kafkaport, kafkatopic):  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.kafkaHost = kafkahost  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.kafkaPort = kafkaport  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.kafkatopic = kafkatopic  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.producer = KafkaProducer(  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bootstrap_servers = '{kafka_host}:{kafka_port}'.format(kafka_host=self.kafkaHost,kafka_port=self.kafkaPort),  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;security_protocol="SASL_PLAINTEXT",  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sasl_mechanism="GSSAPI",  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sasl_kerberos_service_name="kafka"  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)  &nbsp;&nbsp;&nbsp;&nbsp;def sendFileData(self, params):  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f = open(params,'rb')  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmasMessage = f.read(-1).strip()  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producer = self.producer  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producer.send(self.kafkatopic, parmasMessage)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producer.flush()  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except KafkaError as e:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print (e)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  def main():  &nbsp;&nbsp;&nbsp;&nbsp;filePath = "/mnt/data/"  &nbsp;&nbsp;&nbsp;&nbsp;topic = "demo"  &nbsp;&nbsp;&nbsp;&nbsp;producer = Kafka_Producer("xxx","9092",topic)  &nbsp;&nbsp;&nbsp;&nbsp;dirList = os.listdir(filePath)  &nbsp;&nbsp;&nbsp;&nbsp;for fileName in dirList:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;producer.sendFileData(filePath+fileName)  &nbsp;&nbsp;&nbsp;&nbsp;print('send success!!!')    if __name__=='__main__':  &nbsp;&nbsp;&nbsp;&nbsp;main()</code></pre> <h3>遇到的问题：</h3> <p>1、gssapi包导入不成功。因为krb5-devel.x86_64没有windows版本，在 window下导入gssapi会报“krb5-config --libs gssapi”。需要在linux环境下 安装krb5-devel.x86_64导入gssapi。</p> <h3>参考资料：</h3> <p>&nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/feng18/p/5854912.html"  rel="nofollow">https://www.cnblogs.com/feng18/p/5854912.html</a></p> <p>&nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.iteblog.com/archives/2148.html"  rel="nofollow">https://www.iteblog.com/archives/2148.html</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49383.htm">动物疫苗间隔多久打一次比较好（动物疫苗多长时间打一次）</a></p>
+                                        <p>下一个：<a href="/news/article-49904.htm">兽医疫苗批号查询系统（兽用疫苗真伪查询）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23786.htm" title="宠物领养协议书范本 简单版图片下载 宠物领养协议书范本 简单版图片下载大全">宠物领养协议书范本 简单版图片下载 宠物领养协议书范本 简单版图片下载大全</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-31-free-subscribe-node.htm" title="1月31日→21.7M/S|2025年最新免费节点Clash Node订阅链接地址">1月31日→21.7M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29848.htm" title="南京宠物寄养哪里好（南京哪里可以寄养狗狗）">南京宠物寄养哪里好（南京哪里可以寄养狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-27045.htm" title="宠物粮食品牌都有什么名字呢女生（宠物粮食品牌起名大全）">宠物粮食品牌都有什么名字呢女生（宠物粮食品牌起名大全）</a></li>
+                        <li class="py-2"><a href="/news/article-43939.htm" title="动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）">动物医院工作流程手册电子版（动物医院工作流程手册电子版下载）</a></li>
+                        <li class="py-2"><a href="/news/article-28433.htm" title="厦门哪里领养宠物（厦门有没有领养宠物）">厦门哪里领养宠物（厦门有没有领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-35154.htm" title="PyQt5 按钮Button 添加事件(信号/槽)">PyQt5 按钮Button 添加事件(信号/槽)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-high-speed-nodes.htm" title="12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月1日→18.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-46892.htm" title="养300只土狗利润多少?天天视频（养300只土狗利润多少?美女）">养300只土狗利润多少?天天视频（养300只土狗利润多少?美女）</a></li>
+                        <li class="py-2"><a href="/news/article-36218.htm" title="专门卖宠物的软件（售卖宠物的软件）">专门卖宠物的软件（售卖宠物的软件）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
