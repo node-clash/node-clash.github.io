@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-51462.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工作纪实微服务Feign调用出现的各种异常解决方案</title>
+        <meta name="description" content="feign调用问题汇总 1. feign调用微服务get请求提示post not supported  fein定义和controller接口的请求方法不一致[一定要都是get方法才行] 如果排除掉第" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-51462.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="工作纪实微服务Feign调用出现的各种异常解决方案" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/9ee547b136924d46adf79c4c9c2228ec.webp" />
+        <meta property="og:release_date" content="2025-02-05T08:19:34" />
+    <meta property="og:updated_time" content="2025-02-05T08:19:34" />
+        <meta property="og:description" content="feign调用问题汇总 1. feign调用微服务get请求提示post not supported  fein定义和controller接口的请求方法不一致[一定要都是get方法才行] 如果排除掉第" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="工作纪实微服务Feign调用出现的各种异常解决方案">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="#">关于</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">工作纪实微服务Feign调用出现的各种异常解决方案</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3><a id="feign_0" rel="nofollow"></a>feign调用问题汇总</h3> <h4><a id="1_feigngetpost_not_supported_1" rel="nofollow"></a>1. feign调用微服务get请求提示post not supported</h4> <ol> <li>fein定义和controller接口的请求方法不一致[一定要都是get方法才行]</li> <li>如果排除掉第一个问题，fein接口的Get方法接口，此时请求参数前面没有加上@RequestParam也会有此报错【我也不知道为什么，但就是这样解决的】</li> </ol> <h4><a id="2feign_5" rel="nofollow"></a>2.feign调用微服务超时</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220722/225a327b0df4eadd9dc19832d6de8c4d.jpg" alt="工作纪实微服务Feign调用出现的各种异常解决方案"><br /> feign、ribbon的超时通用设置</p> <pre><code class="prism language-bash"><span class="token comment">#默认为10s</span> feign.client.config.default.connectTimeout<span class="token operator">=</span> 10000<span class="token comment">#默认为60s</span> feign.client.config.default.readTimeout<span class="token operator">=</span> 60000 ribbon.ConnectTimeout<span class="token operator">=</span> 10000 ribbon.ReadTimeout<span class="token operator">=</span> 60000 ribbon.eager-load.enabled<span class="token operator">=</span><span class="token boolean">true</span> feign.okhttp.enabled<span class="token operator">=</span><span class="token boolean">true</span> feign.compression.request.enabled<span class="token operator">=</span><span class="token boolean">false</span> feign.compression.response.enabled<span class="token operator">=</span><span class="token boolean">false</span> feign.httpclient.max-connections<span class="token operator">=</span> 1000 feign.httpclient.max-connections-per-route<span class="token operator">=</span> 500</code></pre> <p>如果还是不行，出现<code>hystrix</code>方面的报错，再加上<code>hystrix</code>的超时即可</p> <p>如果还是不行，出现服务器方面的报错，再把服务器的连接超时时候设置一下就可以</p> <p>不管怎么解决问题，feign、ribbon的重试机制，能关闭掉就关闭掉！</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-50944.htm">宠物粮生产基地在哪里 宠物粮生产基地在哪里啊</a></p>
+                                        <p>下一个：<a href="/news/article-51463.htm">猫抓伤的轻微图（猫抓伤的轻微图女）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-35679.htm" title="长沙市宠物领养（长沙哪里有宠物领养）">长沙市宠物领养（长沙哪里有宠物领养）</a></li>
+                        <li class="py-2"><a href="/news/article-21500.htm" title="动物医院取什么名字好听一点（动物医院牌子）">动物医院取什么名字好听一点（动物医院牌子）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-high-speed-nodes.htm" title="11月9日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址">11月9日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-node-share-links.htm" title="2月1日→18.7M/S|2025年最新免费节点Clash Node订阅链接地址">2月1日→18.7M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-node-subscribe.htm" title="11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址">11月28日→20.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29848.htm" title="南京宠物寄养哪里好（南京哪里可以寄养狗狗）">南京宠物寄养哪里好（南京哪里可以寄养狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-33658.htm" title="中国农大动物医院怎么挂号（中国农业大学动物医院预约挂号验证码）">中国农大动物医院怎么挂号（中国农业大学动物医院预约挂号验证码）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-high-speed-nodes.htm" title="1月1日→18M/S|2025年最新免费节点Clash Node订阅链接地址">1月1日→18M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29373.htm" title="动物医院连锁店有哪些（动物医院诊疗范围）">动物医院连锁店有哪些（动物医院诊疗范围）</a></li>
+                        <li class="py-2"><a href="/news/article-41953.htm" title="动物疫苗排名前十名有哪些种类 动物疫苗排名前十名有哪些种类的">动物疫苗排名前十名有哪些种类 动物疫苗排名前十名有哪些种类的</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
