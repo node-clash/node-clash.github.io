@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-57449.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C语言实现二叉树的插入和删除</title>
+        <meta name="description" content="二叉树的插入删除：  //首先介绍二叉树的插入： &nbsp;&nbsp;&nbsp;&nbsp;//首先需要明白插入的规则：每个建好的结点p都需要从跟结点开始与根结点相比较数据域，如果根结点的数据域" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-57449.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="C语言实现二叉树的插入和删除" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/123f7e72008e181022f1777edc84387f.webp" />
+        <meta property="og:release_date" content="2025-02-16T07:20:09" />
+    <meta property="og:updated_time" content="2025-02-16T07:20:09" />
+        <meta property="og:description" content="二叉树的插入删除：  //首先介绍二叉树的插入： &nbsp;&nbsp;&nbsp;&nbsp;//首先需要明白插入的规则：每个建好的结点p都需要从跟结点开始与根结点相比较数据域，如果根结点的数据域" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C语言实现二叉树的插入和删除">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">C语言实现二叉树的插入和删除</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views">                     <strong><span style="font-size:16px;">二叉树的插入删除：</span></strong><br /> </p> <pre><code class="language-plain">//首先介绍二叉树的插入： &nbsp;&nbsp;&nbsp;&nbsp;//首先需要明白插入的规则：每个建好的结点p都需要从跟结点开始与根结点相比较数据域，如果根结点的数据域小于结点p，则接着将结点p与根结点的右子树相比较，否则p将与根结点的左子树相比较； &nbsp;&nbsp;&nbsp;&nbsp;//继续往下类推，一直到最后一次比较完后，指针head的左子树或者右子树为空，退出循环（也就是，当到达叶子结点时），因为每次进入循环都要把head结点赋给parent双亲结点，所以这个结点也表示双亲结点； &nbsp;&nbsp;&nbsp;&nbsp;//之后将双亲结点parent与p-&gt;data（也就是key的值）比较，如果双亲结点大，那么，p为双亲结点的左子树，否则为双亲结点的右子树；</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/a29e56f1cac071ac8fa32f80a5f1516f.jpg" alt="C语言实现二叉树的插入和删除"></p> <p></p> <pre><code class="language-plain">//介绍二叉树的删除： &nbsp;&nbsp;&nbsp;&nbsp;//二叉树的删除有三种情况： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//1&gt;删除的结点为叶子结点； &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//删除节点是叶节点，即没有子节点，或者说左右子节点都是NULL。这种情况下，只需要把删除节点的父节点中对应的指针指向NULL即可。然后释放掉删除节点的空间； &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//2&gt;删除的结点有左子树或者右子树，只能有一个； &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//删除节点有一个子节点（左子节点或右子节点），这种情况下，把删除节点的父节点中对应的指针指向删除节点的子节点即可。然后释放掉删除节点的空间;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//3&gt;删除的结点左右子树都有，两个都有； &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//删除节点有两个子节点，这种情况下，必须要找到一个替代删除节点的替代节点，并且保证二叉树的排序性。根据二叉树的排序性，可知替代节点的键值必须最接近删除节点键值。比删除节点键值小的所有键值中最大那个，或者是比删除节点键值大的所有键值中最小的那个，是符合要求的。这两个键值所在的节点分别在删除节点的左子树中最右边的节点，删除节点右子树中最左边的节点；  &nbsp;&nbsp;&nbsp;&nbsp;//以图例的形式表示第三种方式的删除；</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color:rgb(255,204,204);">第三种方式的删除：</span><span style="background-color:rgb(255,255,255);">&nbsp; &nbsp;</span><strong><span style="color:#ff0000;">最重要的是找到删除结点以及它的父结点；<br /></span></strong></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">1&gt;</span>找到删除节点以及它的父节点在删除节点的左子树中，向下向右遍历，找到替代节点以及它的父节点；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">2&gt;</span>删除节点的父节点中对应的指针指向替代节点；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">3&gt;</span>替代节点中的右子节点指针指向删除节点的右子树；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">4&gt;</span>如果替代节点的父节点不是删除节点，则将替代节点的左子节点指针指向删除节点的左子树，并且替代节点的父节<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点中对应的指针指向替代节点的左子节点；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">5&gt;</span>释放删除节点的空间；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <strong><span style="color:#ff0000;">注意：</span></strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">1&gt;</span>第二步中找到的替代节点，可能会有左子树，但一定没有右子树。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(204,255,255);">2&gt;</span>第五步要判断替代节点的父节点不是删除节点后，才将替代节点的左子节点指针指向删除节点的左子树，否则<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会出现替代节点左子节点指针指向自己的情况，从而丢失替代节点的左子树。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="background-color:rgb(255,204,204);">第三种方式的图画显示：</span><span style="color:#ff0000;background-color:rgb(255,255,255);"><strong>两种方式；</strong></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/56a86af990d5e9934afd116ad8de9afb.jpg" alt="C语言实现二叉树的插入和删除"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230217/93af3a3a47d5d575e4b28aa70c99b2d5.jpg" alt="C语言实现二叉树的插入和删除"></p> <pre><code class="language-objc">#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #define N 9 int a[]={3,2,5,8,4,7,6,9,10};  //二叉树的结点类型； typedef struct tree { 	int data; 	struct tree *lchild; 	struct tree *rchild; }BitTree;  //在二叉排序树中插入查找关键字可以； void Inserter(BitTree *bt,int key)   { 	BitTree *parent;   //表示双亲结点； 	BitTree *head = bt; 	BitTree *p=(BitTree *)malloc(sizeof(BitTree)); 	p-&gt;data=key;   //保存结点数据； 	p-&gt;lchild=p-&gt;rchild=NULL;  //左右子树置空； 	 	//查找需要添加的父结点，这个父结点是度为0的结点； 	while(head)  	{ 		parent=head; 		if(key&lt;head-&gt;data)   //若关键字小于结点的数据； 			head=head-&gt;lchild; //在左子树上查找；  		else   //若关键字大于结点的数据； 			head=head-&gt;rchild;  //在右子树上查找； 	} 	//判断添加到左子树还是右子树； 	if(key&lt;parent-&gt;data)   //小于父结点； 		parent-&gt;lchild=p;    //添加到左子树； 	else    //大于父结点； 		parent-&gt;rchild=p;   //添加到右子树； }  //n个数据在数组data[]中； BitTree *Createer(BitTree *bt,int data[],int n)   { 	bt=(BitTree *)malloc(sizeof(BitTree)); 	bt-&gt;data=data[0]; 	bt-&gt;lchild=bt-&gt;rchild=NULL; 	for(int i=1;i&lt;n;i++) 		Inserter(bt,data[i]); 	return bt; }  //中序遍历； void PreOrder(BitTree *bt) { 	if(bt) 	{ 		PreOrder(bt-&gt;lchild); 		printf("%d ",bt-&gt;data); 		PreOrder(bt-&gt;rchild); 	} }  //删除结点； void Deleteer(BitTree *bt,int key) { 	BitTree *L,*LL;    //在删除左右子树都有的结点时使用； 	BitTree *p=bt; 	BitTree *parent=bt; 	int child=0;  //0表示左子树，1表示右子树； 	if(!bt)    //如果排序树为空，则退出； 		return ; 	while(p)  //二叉排序树有效； 	{ 		if(p-&gt;data==key) 		{ 			if(!p-&gt;lchild&amp;&amp;!p-&gt;rchild)  //叶结点(左右子树都为空)； 			{ 				if(p==bt)  //被删除的结点只有根结点； 					free(p); 				else if(child==0) 				{ 					parent-&gt;lchild=NULL;  //设置父结点左子树为空； 					free(p);   //释放结点空间； 				} 				else   //父结点为右子树； 				{ 					parent-&gt;rchild=NULL;  //设置父结点右子树为空； 					free(p);  //释放结点空间； 				} 			}  			else if(!p-&gt;lchild)  //左子树为空，右子树不为空； 			{ 				if(child==0)    //是父结点的左子树； 					parent-&gt;lchild=p-&gt;rchild; 				else      //是父结点的右子树； 					parent-&gt;rchild=p-&gt;rchild; 				free(p);  //释放被删除的结点； 			}  			else if(!p-&gt;rchild)  //右子树为空，左子树不为空； 			{ 				if(child==0)  //是父结点的左子树； 					parent-&gt;lchild=p-&gt;lchild; 				else      //是父结点的右子树； 					parent-&gt;rchild=p-&gt;lchild; 				free(p);  //释放被删除的结点； 			}  			else 			{ 				LL=p;  //保存左子树的结点； 				L=p-&gt;rchild;  //从当前结点的右子树进行查找； 				if(L-&gt;lchild)  //左子树不为空； 				{ 					LL=L; 					L=L-&gt;lchild;   //查找左子树； 					p-&gt;data=L-&gt;data;  //将左子树的数据保存到被删除结点； 					LL-&gt;lchild=L-&gt;lchild;  //设置父结点的左子树指针为空； 					for(;L-&gt;lchild;L=L-&gt;lchild); 					L-&gt;lchild=p-&gt;lchild; 					p-&gt;lchild=NULL; 				} 				else 				{ 					p-&gt;data=L-&gt;data; 					LL-&gt;rchild=L-&gt;rchild; 				} 			} 			p=NULL; 		}  		else if(key&lt;p-&gt;data)  //需删除记录的关键字小于结点的数据； 		{ 			//要删除的结点p是parent的左子树； 			child=0;  //标记在当前结点左子树； 			parent=p;//保存当前结点作为父结点； 			p=p-&gt;lchild;  //查找左子树； 		}  		else  //需删除记录的关键字大于结点的数据； 		{ 			//要删除的结点p是parent的右子树； 			child=1;  //标记在当前结点右子树查找； 			parent=p;  //保存当前结点作为父结点； 			p=p-&gt;rchild;  //查找右子树； 		} 	} }  int main(void) { 	BitTree *bt;  //保存二叉排序树根结点； 	printf("数组数据为:\n"); 	for(int i=0;i&lt;N;i++) 		printf("%d ",a[i]); 	printf("\n\n");  	bt=Createer(bt,a,N); 	printf("遍历后的二叉排序树为(中序遍历输出):\n"); 	PreOrder(bt); 	printf("\n\n\n");  	printf("     **将数据8插入到二叉树中**\n\n"); 	printf("插入后的二叉树为(中序遍历输出):\n"); 	Inserter(bt,8); 	PreOrder(bt); 	printf("\n\n\n"); 	 	printf("     **将数据5从二叉树中删除**\n\n"); 	printf("删除后的二叉树为(中序遍历输出):\n"); 	Deleteer(bt,5);   //删除拥有左右子树的结点有问题； 	PreOrder(bt); 	printf("\n"); 	return 0; }</code></pre> <p>//输出结果截图：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/4c417782039f0873ab4dfc97e5e2ef5c.jpg" alt="C语言实现二叉树的插入和删除"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-56891.htm">动物注射疫苗的流程图片视频（动物注射疫苗的流程图片视频教程）</a></p>
+                                        <p>下一个：<a href="/news/article-57450.htm">动物医院实践心得5000字怎么写的（动物医院心得体会）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-free-node-subscribe.htm" title="1月5日→22.7M/S|2025年最新免费节点Clash Node订阅链接地址">1月5日→22.7M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27047.htm" title="动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）">动物疫苗产业链有哪些公司（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/news/article-30321.htm" title="动物疫苗的作用（动物疫苗是有毒有害吗）">动物疫苗的作用（动物疫苗是有毒有害吗）</a></li>
+                        <li class="py-2"><a href="/news/article-29370.htm" title="重庆宠物领养平台官网地址电话查询（重庆宠物领养中心官网）">重庆宠物领养平台官网地址电话查询（重庆宠物领养中心官网）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-subscribe-node.htm" title="1月6日→21M/S|2025年最新免费节点Clash Node订阅链接地址">1月6日→21M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-node-share.htm" title="12月10日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月10日→19.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-node-share.htm" title="12月6日→22.1M/S|2024年最新免费节点Clash Node订阅链接地址">12月6日→22.1M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-node-share-links.htm" title="12月27日→21.3M/S|2024年最新免费节点Clash Node订阅链接地址">12月27日→21.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48869.htm" title="哪里可以给动物打狂犬（动物到哪里打狂犬疫苗）">哪里可以给动物打狂犬（动物到哪里打狂犬疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-48870.htm" title="三国杀武将的台词大全（三国杀武将台词大全整理）">三国杀武将的台词大全（三国杀武将台词大全整理）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

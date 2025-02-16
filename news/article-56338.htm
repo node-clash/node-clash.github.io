@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-56338.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Python学习 3 &#8211; while 循环语句</title>
+        <meta name="description" content="个人学习总结笔记如有不足和错误欢迎指教谢谢 while 语句 和 if 语句差不多 在while 后面加上所需的循环条件用 “ : ”作为结尾，当条件满足时就运行while下面的程序块直到while后" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-56338.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Python学习 3 &#8211; while 循环语句" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/22a9ddb08ade6613746e7631c6b13e03.webp" />
+        <meta property="og:release_date" content="2025-02-14T10:01:41" />
+    <meta property="og:updated_time" content="2025-02-14T10:01:41" />
+        <meta property="og:description" content="个人学习总结笔记如有不足和错误欢迎指教谢谢 while 语句 和 if 语句差不多 在while 后面加上所需的循环条件用 “ : ”作为结尾，当条件满足时就运行while下面的程序块直到while后" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python学习 3 &#8211; while 循环语句">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">Python学习 3 &#8211; while 循环语句</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>个人学习总结笔记如有不足和错误欢迎指教谢谢</p> <p>while 语句 和 if 语句差不多</p> <p>在while 后面加上所需的循环条件用 “ : ”作为结尾，当条件满足时就运行while下面的程序块直到while后面的条件不再被满足，程序会跳出while语句继续往下运行，大概有以下几种：</p> <p>while基本循环</p> <p>while …… continue 语句</p> <p>while ……break语句</p> <p>while ……else语句</p> <p>1、while 基本循环：满足条件就开始循环，条件无法满足就跳出</p> <p>例如：</p> <p>显示1到100所有的数字</p> <pre><code class="language-python">shuZi = 0 #定义变量名称“ shuZi ”并且给它赋值为 0 while shuZi &lt; 100 : #设置循环条件是 shuZi 的值小于100     shuZi = shuZi + 1 #shuZi 的值加 1      print(shuZi) #把shuZi 的值显示出来      ''' 显示1到100有所的数字 '''</code></pre> <p>2、while …… continue 语句：等运行至continue时终止当前循环开始下一次循环</p> <p>例如：</p> <p>显示1 2 3 4 5 6 8 9 10（不显示7）</p> <pre><code class="language-python">shuZi = 0 #定义变量 shuZi 并赋值为 0 while shuZi &lt; 10 : #设置循环条件是 shuZi 小于 10     shuZi = shuZi + 1 #shuZi的赋值 + 1     if shuZi == 7: #设定if判断条件 为 shuZi 的值等于7          continue #以下的代码 就不再执行了 直接跳回到 while开始的地方     else:         print(shuZi) #否则就显示shuZi的值</code></pre> <p>3、while ……break语句：程序运行至break的时候 终止所有循环</p> <p>例如：</p> <p>用户三次登录机会</p> <pre><code class="language-python">yongHuMing = 0  #定义变量 yongHuMing 并赋值为0 miMa = 0    #定义变量 miMa 并赋值为0 x = 3   #定义变量 x 并赋值为0 while x &gt; 0 :  #设置循环条件为 x 大于 0     yongHuMing = input ('请输入用户名：')  #显示 请输入用户名：并且赋值给 yongHuMing     miMa = input ('请输入密码：')     #显示 请输入密码：并且赋值给 miMa         if yongHuMing == 'adam' and miMa == '123' :   #如果 yongHuMing 的值等于adam 并且 miMa的值等于123         print ('登录成功')      #则显示登录成功          break       #退出循环     else:         x = x - 1   #否则 x的值 减1          print ('登录失败请重新登录') #显示登录失败请重新登录</code></pre> <p>4、while ……else语句：如果不再满足循环条件则执行else后的命令</p> <p>例如：</p> <p>显示1-10 这10个数字，最后告知显示完毕</p> <pre><code class="language-python">shuZi = 0 #定义变量名称“ shuZi ”并且给它赋值为 0 while shuZi &lt; 10 :  #设置循环条件是 shuZi 小于 10     shuZi = shuZi + 1 #shuZi 的值加 1      print(shuZi) #把shuZi 的值显示出来 else:           #当shuZi小于10的条件无法满足时     print("全部显示完毕") #显示全部显示完毕</code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-55770.htm">宠物领养的法律法规有哪些内容（宠物领养规则）</a></p>
+                                        <p>下一个：<a href="/news/article-56339.htm">动物疫苗接种方法及注意事项有哪些呢图片视频（动物疫苗知识）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-subscribe-node.htm" title="1月2日→22.9M/S|2025年最新免费节点Clash Node订阅链接地址">1月2日→22.9M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24719.htm" title="成都宠物托运公司哪家比较好用（成都宠物托运公司排名）">成都宠物托运公司哪家比较好用（成都宠物托运公司排名）</a></li>
+                        <li class="py-2"><a href="/news/article-23317.htm" title="新手开店适合开什么店利润高（新手开店卖什么东西赚钱）">新手开店适合开什么店利润高（新手开店卖什么东西赚钱）</a></li>
+                        <li class="py-2"><a href="/news/article-50422.htm" title="郑州动物防疫站打疫苗多少钱啊（郑州动物疫苗批发地址）">郑州动物防疫站打疫苗多少钱啊（郑州动物疫苗批发地址）</a></li>
+                        <li class="py-2"><a href="/news/article-28434.htm" title="动物疫苗的使用方法及注意事项视频教程全集 动物疫苗的使用方法及注意事项视频教程全集下载">动物疫苗的使用方法及注意事项视频教程全集 动物疫苗的使用方法及注意事项视频教程全集下载</a></li>
+                        <li class="py-2"><a href="/news/article-31743.htm" title="【SpringBoot】核心依赖和自动配置">【SpringBoot】核心依赖和自动配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe-links.htm" title="11月5日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址">11月5日→22.8M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-8-node-share.htm" title="1月8日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址">1月8日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27973.htm" title="自己开个宠物店需要准备什么条件（自己开宠物店需要什么证）">自己开个宠物店需要准备什么条件（自己开宠物店需要什么证）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-node-share.htm" title="2月5日→22.6M/S|2025年最新免费节点Clash Node订阅链接地址">2月5日→22.6M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
