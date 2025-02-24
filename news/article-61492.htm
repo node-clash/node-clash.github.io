@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-61492.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>docker部署confluence</title>
+        <meta name="description" content="因为应用容器化部署已经是标准化的流程，无需再详篇介绍具体的部署流程。所以本文只提供相关的配置文档。如果对部署过程不了解的同学，请先自学容器基础。 镜像已经创建好了，如下 docker.io/xhuau" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-61492.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="docker部署confluence" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/f6b038e2116208849f4f1c844bed1d59.webp" />
+        <meta property="og:release_date" content="2025-02-23T09:45:44" />
+    <meta property="og:updated_time" content="2025-02-23T09:45:44" />
+        <meta property="og:description" content="因为应用容器化部署已经是标准化的流程，无需再详篇介绍具体的部署流程。所以本文只提供相关的配置文档。如果对部署过程不了解的同学，请先自学容器基础。 镜像已经创建好了，如下 docker.io/xhuau" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="docker部署confluence">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">docker部署confluence</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>因为应用容器化部署已经是标准化的流程，无需再详篇介绍具体的部署流程。所以本文只提供相关的配置文档。如果对部署过程不了解的同学，请先自学容器基础。<br /> 镜像已经创建好了，如下</p> <pre class="has"><code>docker.io/xhuaustc/confluence:6.7.1 docker.io/xhuaustc/atlassian-mysql:5.7</code></pre> <h2>镜像构建配置</h2> <h2>mysql镜像</h2> <pre class="has"><code># my.cnf [mysqld]  # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links = 0  # http://www.percona.com/blog/2008/05/31/dns-achilles-heel-mysql-installation/ skip_name_resolve  # http://www.chriscalender.com/ignoring-the-lostfound-directory-in-your-datadir/ ignore-db-dir=lost+found  character_set_server=utf8 init_connect='SET NAMES utf8' collation_server=utf8_bin transaction_isolation='read-committed'  !includedir /etc/my.cnf.d</code></pre> <pre class="has"><code># Dockerfile FROM centos/mysql-57-centos7 COPY my.cnf /etc/my.cnf</code></pre> <h2>confluence镜像</h2> <pre class="has"><code>git clone https://github.com/cptactionhank/docker-atlassian-confluence</code></pre> <p>在Dockerfile目录下添加server.xml, setenv.sh与atlassian-extras-decoder-v2-3.3.0.jar</p> <pre class="has"><code># server.xml &lt;?xml version="1.0"?&gt; &lt;Server port="8000" shutdown="SHUTDOWN"&gt;   &lt;Service name="Tomcat-Standalone"&gt;     &lt;Connector port="8090" connectionTimeout="300000" redirectPort="8443" maxThreads="400" minSpareThreads="10" enableLookups="false" acceptCount="100" URIEncoding="UTF-8" protocol="org.apache.coyote.http11.Http11NioProtocol"/&gt;     &lt;Engine name="Standalone" defaultHost="localhost"&gt;       &lt;Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="false" startStopThreads="4"&gt;         &lt;Context path="" docBase="../confluence" reloadable="false" useHttpOnly="true"&gt;           &lt;!-- Logger is deprecated in Tomcat 5.5. Logging configuration for Confluence is specified in confluence/WEB-INF/classes/log4j.properties --&gt;           &lt;Manager pathname=""/&gt;           &lt;Valve className="org.apache.catalina.valves.StuckThreadDetectionValve" threshold="600"/&gt;         &lt;/Context&gt;         &lt;Context path="${confluence.context.path}/synchrony-proxy" docBase="../synchrony-proxy" reloadable="false" useHttpOnly="true"&gt;           &lt;Valve className="org.apache.catalina.valves.StuckThreadDetectionValve" threshold="600"/&gt;         &lt;/Context&gt;       &lt;/Host&gt;     &lt;/Engine&gt;     &lt;!--             To run Confluence via HTTPS:              * Uncomment the Connector below              * Execute:                  %JAVA_HOME%\bin\keytool -genkey -alias tomcat -keyalg RSA (Windows)                  $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA  (Unix)                with a password value of "changeit" for both the certificate and the keystore itself.              * Restart and visit https://localhost:8443/               For more info, see https://confluence.atlassian.com/display/DOC/Running+Confluence+Over+SSL+or+HTTPS         --&gt;     &lt;!--         &lt;Connector port="8443" maxHttpHeaderSize="8192"                    maxThreads="150" minSpareThreads="25"                    protocol="org.apache.coyote.http11.Http11NioProtocol"                    enableLookups="false" disableUploadTimeout="true"                    acceptCount="100" scheme="https" secure="true"                    clientAuth="false" sslProtocols="TLSv1,TLSv1.1,TLSv1.2" sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2" SSLEnabled="true"                    URIEncoding="UTF-8" keystorePass="&lt;MY_CERTIFICATE_PASSWORD&gt;"/&gt; --&gt;   &lt;/Service&gt; &lt;/Server&gt;</code></pre> <pre class="has"><code># setenv.sh # See the CATALINA_OPTS below for tuning the JVM arguments used to start Confluence.  echo "If you encounter issues starting up Confluence, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide"  # set the location of the pid file if [ -z "$CATALINA_PID" ] ; then     if [ -n "$CATALINA_BASE" ] ; then         CATALINA_PID="$CATALINA_BASE"/work/catalina.pid     elif [ -n "$CATALINA_HOME" ] ; then         CATALINA_PID="$CATALINA_HOME"/work/catalina.pid     fi fi export CATALINA_PID  PRGDIR=`dirname "$0"` if [ -z "$CATALINA_BASE" ]; then   if [ -z "$CATALINA_HOME" ]; then     LOGBASE=$PRGDIR     LOGTAIL=..   else     LOGBASE=$CATALINA_HOME     LOGTAIL=.   fi else   LOGBASE=$CATALINA_BASE   LOGTAIL=. fi  PUSHED_DIR=`pwd` cd $LOGBASE cd $LOGTAIL LOGBASEABS=`pwd` cd $PUSHED_DIR  echo "" echo "Server startup logs are located in $LOGBASEABS/logs/catalina.out" # IMPORTANT NOTE: Only set JAVA_HOME or JRE_HOME above this line # Get standard Java environment variables if $os400; then   # -r will Only work on the os400 if the files are:   # 1. owned by the user   # 2. owned by the PRIMARY group of the user   # this will not work if the user belongs in secondary groups   . "$CATALINA_HOME"/bin/setjre.sh else   if [ -r "$CATALINA_HOME"/bin/setjre.sh ]; then     . "$CATALINA_HOME"/bin/setjre.sh   else     echo "Cannot find $CATALINA_HOME/bin/setjre.sh"     echo "This file is needed to run this program"     exit 1   fi fi  echo "---------------------------------------------------------------------------" echo "Using Java: $JRE_HOME/bin/java" CONFLUENCE_CONTEXT_PATH=`$JRE_HOME/bin/java -jar $CATALINA_HOME/bin/confluence-context-path-extractor.jar $CATALINA_HOME` export CONFLUENCE_CONTEXT_PATH $JRE_HOME/bin/java -jar $CATALINA_HOME/bin/synchrony-proxy-watchdog.jar $CATALINA_HOME echo "---------------------------------------------------------------------------" JVM_MINIMUM_MEMORY=${JVM_XMS:-384m} JVM_MAXIMUM_MEMORY=${JVM_XMX:-768m}  # Set the JVM arguments used to start Confluence. For a description of the options, see # http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html CATALINA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} -XX:-PrintGCDetails -XX:+PrintGCDateStamps -XX:-PrintTenuringDistribution ${CATALINA_OPTS}" CATALINA_OPTS="-Xloggc:$LOGBASEABS/logs/gc-`date +%F_%H-%M-%S`.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2M ${CATALINA_OPTS}" CATALINA_OPTS="-XX:G1ReservePercent=20 ${CATALINA_OPTS}" CATALINA_OPTS="-Djava.awt.headless=true ${CATALINA_OPTS}" CATALINA_OPTS="-Datlassian.plugins.enable.wait=300 ${CATALINA_OPTS}" CATALINA_OPTS="-Dsynchrony.enable.xhr.fallback=true ${CATALINA_OPTS}" CATALINA_OPTS="-Dorg.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE=32768 ${CATALINA_OPTS}" CATALINA_OPTS="${START_CONFLUENCE_JAVA_OPTS} ${CATALINA_OPTS}" CATALINA_OPTS="-Dconfluence.context.path=${CONFLUENCE_CONTEXT_PATH} ${CATALINA_OPTS}"   export CATALINA_OPTS</code></pre> <p>修改Dockerfile</p> <pre class="has"><code># Dockerfile FROM openjdk:8-alpine  # Setup useful environment variables ENV CONF_HOME     /var/atlassian/confluence ENV CONF_INSTALL  /opt/atlassian/confluence ENV CONF_VERSION  6.7.1  ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts ENV CERTIFICATE   $CONF_HOME/certificate  # Install Atlassian Confluence and helper tools and setup initial home # directory structure. RUN set -x \     &amp;&amp; apk --no-cache add curl xmlstarlet bash ttf-dejavu libc6-compat \     &amp;&amp; mkdir -p                "${CONF_HOME}" \     &amp;&amp; chmod -R 777            "${CONF_HOME}" \     &amp;&amp; mkdir -p                "${CONF_INSTALL}/conf" \     &amp;&amp; curl -Ls                "https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONF_VERSION}.tar.gz" | tar -xz --directory "${CONF_INSTALL}" --strip-components=1 --no-same-owner \     &amp;&amp; curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz" | tar -xz --directory "${CONF_INSTALL}/confluence/WEB-INF/lib" --strip-components=1 --no-same-owner "mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar" \     &amp;&amp; chmod -R 777            "${CONF_INSTALL}/conf" \     &amp;&amp; chmod -R 777            "${CONF_INSTALL}/temp" \     &amp;&amp; chmod -R 777            "${CONF_INSTALL}/logs" \     &amp;&amp; chmod -R 777            "${CONF_INSTALL}/work" \     &amp;&amp; echo -e                 "\nconfluence.home=$CONF_HOME" &gt;&gt; "${CONF_INSTALL}/confluence/WEB-INF/classes/confluence-init.properties" \     &amp;&amp; xmlstarlet              ed --inplace \         --delete               "Server/@debug" \         --delete               "Server/Service/Connector/@debug" \         --delete               "Server/Service/Connector/@useURIValidationHack" \         --delete               "Server/Service/Connector/@minProcessors" \         --delete               "Server/Service/Connector/@maxProcessors" \         --delete               "Server/Service/Engine/@debug" \         --delete               "Server/Service/Engine/Host/@debug" \         --delete               "Server/Service/Engine/Host/Context/@debug" \                                "${CONF_INSTALL}/conf/server.xml" \     &amp;&amp; touch -d "@0"           "${CONF_INSTALL}/conf/server.xml"   # Use the default unprivileged account. This could be considered bad practice # on systems where multiple processes end up being executed by 'daemon' but # here we only ever run one process anyway.  # Expose default HTTP connector port. EXPOSE 8090 8091  # Set volume mount points for installation and home directory. Changes to the # home directory needs to be persisted as well as parts of the installation # directory due to eg. logs. VOLUME ["/var/atlassian/confluence", "/opt/atlassian/confluence/logs"]  # Set the default working directory as the Confluence home directory. WORKDIR /var/atlassian/confluence  COPY docker-entrypoint.sh / COPY atlassian-extras-decoder-v2-3.3.0.jar /opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar COPY server.xml /opt/atlassian/confluence/conf/server.xml ENTRYPOINT ["/docker-entrypoint.sh"]  # Run Atlassian Confluence as a foreground process by default. CMD ["/opt/atlassian/confluence/bin/start-confluence.sh", "-fg"]</code></pre> <h2>docker-compose配置</h2> <p>因为mysql用mysql用户启动的，需要把data/mysql权限改为777<br /><code>chmod 777 data/mysql -R</code></p> <pre class="has"><code>wiki:   image: xhuaustc/confluence:6.7.1   restart: always   environment:     - JVM_XMX=1024m     - JVM_XMS=512m   ports:     - '10380:8090'   links:     - db   volumes:     - ./data/confluence:/var/atlassian/confluence     - ./data/logs:/opt/atlassian/confluence/logs  db:   image: xhuaustc/atlassian-mysql:5.7   restart: always   environment:     - MYSQL_USER=confluence     - MYSQL_PASSWORD=conflence     - MYSQL_DATABASE=confluence     - MYSQL_ROOT_PASSWORD=confluence   volumes:     - ./data/mysql:/var/lib/mysql</code></pre> <h2>Openshfit confluence模板</h2> <pre class="has"><code>apiVersion: v1 kind: Template metadata:   creationTimestamp: null   name: confluence objects: - apiVersion: v1   kind: DeploymentConfig   metadata:     labels:       run: confluence     name: confluence   spec:     replicas: 1     selector:       run: confluence     strategy:       type: Recreate     template:       metadata:         labels:           run: confluence       spec:         containers:         - env:             - name: JVM_XMX               value: '2048m'             - name: JVM_XMS               value: '1024m'           image: docker.io/xhuaustc/confluence:6.7.1           imagePullPolicy: IfNotPresent           name: confluence           volumeMounts:           - mountPath: /var/atlassian/confluence             name: volume-7iy6x           - mountPath: /opt/atlassian/confluence/logs             name: volume-zsyly         volumes:         - name: volume-7iy6x           persistentVolumeClaim:             claimName: confluence         - name: volume-zsyly           persistentVolumeClaim:             claimName: log     triggers:     - type: ConfigChange - apiVersion: v1   kind: DeploymentConfig   metadata:     labels:       run: mysql     name: mysql   spec:     replicas: 1     selector:       run: mysql     strategy:       type: Recreate     template:       metadata:         labels:           run: mysql       spec:         containers:         - env:           - name: MYSQL_USER             value: confluence           - name: MYSQL_PASSWORD             value: confluence           - name: MYSQL_DATABASE             value: confluence           - name: MYSQL_ROOT_PASSWORD             value: confluence           image: docker.io/xhuaustc/atlassian-mysql:5.7           imagePullPolicy: IfNotPresent           name: mysql           volumeMounts:           - mountPath: /var/lib/mysql             name: volume-uiwfa          volumes:           - name: volume-uiwfa             persistentVolumeClaim:               claimName: mysql-data     triggers:     - type: ConfigChange - apiVersion: v1   kind: Service   metadata:     labels:       run: confluence     name: confluence   spec:     ports:     - port: 8090       protocol: TCP       targetPort: 8090     selector:       run: confluence     type: ClusterIP - apiVersion: v1   kind: Service   metadata:     labels:       run: mysql     name: mysql   spec:     ports:     - port: 3306       protocol: TCP       targetPort: 3306     selector:       run: mysql     type: ClusterIP - apiVersion: v1   kind: Route   metadata:     annotations:       haproxy.router.openshift.io/timeout: 3000s     labels:       run: confluence     name: confluence   spec:     port:       targetPort: 8090     to:       kind: Service       name: confluence       weight: 100     wildcardPolicy: None - apiVersion: v1   kind: PersistentVolumeClaim   metadata:     annotations:       volume.beta.kubernetes.io/storage-class: ceph-rbd-sc       volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/rbd     name: confluence   spec:     accessModes:     - ReadWriteOnce     resources:       requests:         storage: 20Gi - apiVersion: v1   kind: PersistentVolumeClaim   metadata:     annotations:       volume.beta.kubernetes.io/storage-class: ceph-rbd-sc       volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/rbd     name: log   spec:     accessModes:     - ReadWriteOnce     resources:       requests:         storage: 10Gi - apiVersion: v1   kind: PersistentVolumeClaim   metadata:     annotations:       volume.beta.kubernetes.io/storage-class: ceph-rbd-sc       volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/rbd     name: mysql-data   spec:     accessModes:     - ReadWriteOnce     resources:       requests:         storage: 10Gi</code></pre> <p> 作者：潘晓华Michael<br /> 链接：https://www.jianshu.com/p/e1e8b29affc0<br /> 來源：简书<br /> 简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-60904.htm">Java8新特性-函数式接口（lambda基础）</a></p>
+                                        <p>下一个：<a href="/news/article-61493.htm">开个小型宠物食品加工厂前景怎么样啊赚钱吗（开个小型宠物食品加工厂前景怎么样啊赚钱吗知乎）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-37502.htm" title="包含领养宠物网页平台的词条">包含领养宠物网页平台的词条</a></li>
+                        <li class="py-2"><a href="/news/article-35155.htm" title="被猫抓伤后怎么判断感没感染图片（被猫抓出血怎么判断没事）">被猫抓伤后怎么判断感没感染图片（被猫抓出血怎么判断没事）</a></li>
+                        <li class="py-2"><a href="/news/article-39490.htm" title="动物医院好评语100字通用怎么写呀（动物医院大众点评100字通用评论）">动物医院好评语100字通用怎么写呀（动物医院大众点评100字通用评论）</a></li>
+                        <li class="py-2"><a href="/news/article-38969.htm" title="动物疫苗防疫站几点上班时间查询（动物防疫站周六日上班吗）">动物疫苗防疫站几点上班时间查询（动物防疫站周六日上班吗）</a></li>
+                        <li class="py-2"><a href="/news/article-31217.htm" title="动物医院大众点评怎么做（动物医院大众点评评语）">动物医院大众点评怎么做（动物医院大众点评评语）</a></li>
+                        <li class="py-2"><a href="/news/article-60327.htm" title="vue中captcha.js生成验证码">vue中captcha.js生成验证码</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-node-subscribe-links.htm" title="1月25日→21.6M/S|2025年最新免费节点Clash Node订阅链接地址">1月25日→21.6M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-60903.htm" title="win11系统怎么启用SNMP">win11系统怎么启用SNMP</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-high-speed-nodes.htm" title="11月9日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址">11月9日→22.3M/S|2024年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24253.htm" title="宠物店寄养服务（宠物店寄养服务海报展示）">宠物店寄养服务（宠物店寄养服务海报展示）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
