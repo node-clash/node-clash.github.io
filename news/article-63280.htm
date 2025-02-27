@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-63280.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spring Cloud Feign 分析之FeignClient注解实现版本兼容</title>
+        <meta name="description" content="使用过Spring Cloud Netflix组件的同学都知道，Netflix组件的版本兼容性几乎等于零，特别是大版本变化简直就是噩梦，所以本节主要讲解如何实现Feign的版本兼容，如何兼容Sprin" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-63280.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Spring Cloud Feign 分析之FeignClient注解实现版本兼容" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/ca4eaa69034ebdab31c25510119c3f0e.webp" />
+        <meta property="og:release_date" content="2025-02-26T08:34:04" />
+    <meta property="og:updated_time" content="2025-02-26T08:34:04" />
+        <meta property="og:description" content="使用过Spring Cloud Netflix组件的同学都知道，Netflix组件的版本兼容性几乎等于零，特别是大版本变化简直就是噩梦，所以本节主要讲解如何实现Feign的版本兼容，如何兼容Sprin" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring Cloud Feign 分析之FeignClient注解实现版本兼容">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">Spring Cloud Feign 分析之FeignClient注解实现版本兼容</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <blockquote> <p>使用过Spring Cloud Netflix组件的同学都知道，Netflix组件的版本兼容性几乎等于零，特别是大版本变化简直就是噩梦，所以本节主要讲解如何实现Feign的版本兼容，如何兼容SpringBoot1.x、SpringBoot2.x版本中的Feign使用！这样我们在SpringBoot1.x版本使用@FeignClient在后续升级到SpringBoot2.x之后也不需要我们进行单独修改，毕竟现在微服务众多，全部重新使用SpringBoot2.x版本的FeignClient也是一件不小的事情，毕竟你改了代码那就可能出现问题。所以这一节我们主要提供注解版本的兼容方式(基本零修改),顺带分析下FeignClientsRegistrar部分原理！</p> </blockquote> <hr/> <h3>@EnableFeignClients注解</h3> <pre><code>@Retention(RetentionPolicy.RUNTIME) @Target(ElementType.TYPE) @Documented @Import(FeignClientsRegistrar.class) public @interface EnableFeignClients {     String[] value() default {};     String[] basePackages() default {};     Class&lt;?&gt;[] basePackageClasses() default {};     Class&lt;?&gt;[] defaultConfiguration() default {};     Class&lt;?&gt;[] clients() default {}; }</code></pre> <p>这里我们先看看FeignClient默认实现，通过在启动类上面注解这个类即可开启FeignClient客户端，那么这里我们看看原始FeignClientsRegistrar做了什么事情，为什么就不能兼容以前的版本呢？</p> <hr/> <h3>FeignClientsRegistrar#registerDefaultConfiguration</h3> <pre><code>class FeignClientsRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {     ......     @Override     public void registerBeanDefinitions(AnnotationMetadata metadata,             BeanDefinitionRegistry registry) {         registerDefaultConfiguration(metadata, registry);         registerFeignClients(metadata, registry);     }     //根据@EnableFeignClients中参数defaultConfiguration注册FeignClient的默认配置(FeignClientsConfiguration)     private void registerDefaultConfiguration(AnnotationMetadata metadata,             BeanDefinitionRegistry registry) {         //注意这里的获取的EnableFeignClients.class.getName()这个属性         //我们后面要做自定义注解的映射         Map&lt;String, Object&gt; defaultAttrs = metadata                 .getAnnotationAttributes(EnableFeignClients.class.getName(), true);         if (defaultAttrs != null &amp;&amp; defaultAttrs.containsKey("defaultConfiguration")) {             String name;             if (metadata.hasEnclosingClass()) {                 name = "default." + metadata.getEnclosingClassName();             }             else {                 name = "default." + metadata.getClassName();             }             registerClientConfiguration(registry, name,                     defaultAttrs.get("defaultConfiguration"));         }     }     ...... }</code></pre> <p>这里我们简单的讲解下，从@EnableFeignClients注解中获取defaultConfiguration参数并生产默认配置，其中这个地方关注点metadata.getAnnotationAttributes(EnableFeignClients.class.getName(), true),后面我们的自定义注解会和这个形成映射关系</p> <hr/> <h3>FeignClientsRegistrar#registerFeignClients</h3> <pre><code>class FeignClientsRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {     ......     @Override     public void registerBeanDefinitions(AnnotationMetadata metadata,             BeanDefinitionRegistry registry) {         registerDefaultConfiguration(metadata, registry);         registerFeignClients(metadata, registry);     }     //注册@FeignClient类到IOC容器中     public void registerFeignClients(AnnotationMetadata metadata,             BeanDefinitionRegistry registry) {          LinkedHashSet&lt;BeanDefinition&gt; candidateComponents = new LinkedHashSet&lt;&gt;();         Map&lt;String, Object&gt; attrs = metadata                 .getAnnotationAttributes(EnableFeignClients.class.getName());         final Class&lt;?&gt;[] clients = attrs == null ? null                 : (Class&lt;?&gt;[]) attrs.get("clients");         if (clients == null || clients.length == 0) {             //获取扫描器，             ClassPathScanningCandidateComponentProvider scanner = getScanner();             scanner.setResourceLoader(this.resourceLoader);             //扫描org.springframework.cloud.openfeign.FeignClient注解类             scanner.addIncludeFilter(new AnnotationTypeFilter(FeignClient.class));             Set&lt;String&gt; basePackages = getBasePackages(metadata);             for (String basePackage : basePackages) {                 //添加满足条件的BeanDefinition                 candidateComponents.addAll(scanner.findCandidateComponents(basePackage));             }         }         else {             for (Class&lt;?&gt; clazz : clients) {                 candidateComponents.add(new AnnotatedGenericBeanDefinition(clazz));             }         }         for (BeanDefinition candidateComponent : candidateComponents) {             if (candidateComponent instanceof AnnotatedBeanDefinition) {                 AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;                 AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();                 Assert.isTrue(annotationMetadata.isInterface(),                         "@FeignClient can only be specified on an interface");                 //获取org.springframework.cloud.openfeign.FeignClient对应的属性                 Map&lt;String, Object&gt; attributes = annotationMetadata                         .getAnnotationAttributes(FeignClient.class.getCanonicalName());                  String name = getClientName(attributes);                 registerClientConfiguration(registry, name,                         attributes.get("configuration"));                 //注册到IOC容器                 registerFeignClient(registry, annotationMetadata, attributes);             }         }     } }</code></pre> <p>这个地方我们也简单的解释下具体做了哪些事情</p> <ol> <li>扫描标注了org.springframework.cloud.openfeign.FeignClient注解类</li> <li>通过basePackages路径添加添加满足条件的BeanDefinition</li> <li>通过BeanDefinition集合获取org.springframework.cloud.openfeign.FeignClient注解对应的属性</li> <li>注册Bean到IOC容器中</li> </ol> <hr/> <h3>FeignClient注解实现版本兼容</h3> <pre><code>package org.springframework.cloud.netflix.feign;  @Target(ElementType.TYPE) @Retention(RetentionPolicy.RUNTIME) @Documented @org.springframework.cloud.openfeign.FeignClient public @interface FeignClient {      /**      * The name of the service with optional protocol prefix. Synonym for {@link #name()      * name}. A name must be specified for all clients, whether or not a url is provided.      * Can be specified as property key, eg: ${propertyKey}.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "name")     String value() default "";      /**      * The service id with optional protocol prefix. Synonym for {@link #value() value}.      *      * @deprecated use {@link #name() name} instead      */     @Deprecated     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "serviceId")     String serviceId() default "";      /**      * The service id with optional protocol prefix. Synonym for {@link #value() value}.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "value")     String name() default "";      /**      * Sets the &lt;code&gt;@Qualifier&lt;/code&gt; value for the feign client.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "qualifier")     String qualifier() default "";      /**      * An absolute URL or resolvable hostname (the protocol is optional).      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "url")     String url() default "";      /**      * Whether 404s should be decoded instead of throwing FeignExceptions      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "decode404")     boolean decode404() default false;      /**      * A custom &lt;code&gt;@Configuration&lt;/code&gt; for the feign client. Can contain override      * &lt;code&gt;@Bean&lt;/code&gt; definition for the pieces that make up the client, for instance      * {@link feign.codec.Decoder}, {@link feign.codec.Encoder}, {@link feign.Contract}.      *      * @see FeignClientsConfiguration for the defaults      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "configuration")     Class&lt;?&gt;[] configuration() default {};      /**      * Fallback class for the specified Feign client interface. The fallback class must      * implement the interface annotated by this annotation and be a valid spring bean.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "fallback")     Class&lt;?&gt; fallback() default void.class;      /**      * Define a fallback factory for the specified Feign client interface. The fallback      * factory must produce instances of fallback classes that implement the interface      * annotated by {@link FeignClient}. The fallback factory must be a valid spring      * bean.      *      * @see feign.hystrix.FallbackFactory for details.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "fallbackFactory")     Class&lt;?&gt; fallbackFactory() default void.class;      /**      * Path prefix to be used by all method-level mappings. Can be used with or without      * &lt;code&gt;@RibbonClient&lt;/code&gt;.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "path")     String path() default "";      /**      * Whether to mark the feign proxy as a primary bean. Defaults to false.      */     @AliasFor(annotation = org.springframework.cloud.openfeign.FeignClient.class, attribute = "primary")     boolean primary() default true; }</code></pre> <p>这里我们采用路径覆盖大法，我们重新定义一个org.springframework.cloud.netflix.feign这个包名，然后定义一个FeignClient注解类，然后我们在这个类上在引入一个注解@org.springframework.cloud.openfeign.FeignClient，把SpringBoot2.x版本的FeignClient引入进来，这样我们就实现了版本兼容，我们以前的SpringBoot1.x版本的可以不用修改就可以实现版本兼容。然后在启动类上面使用标准的@EnableFeignClients注解</p> <h3>注意事项</h3> <pre><code>spring:   main:     allow-bean-definition-overriding: true</code></pre> <p>在SpringBoot2.1之前，这个开关默认是打开的，及可以重复定义Bean，但是在SpringBoot2.1之后这个配置默认是false，所以如果我们的SpringBoot版本为2.1之后的，那么这个参数需要设置为true，及允许后面的Bean可以覆盖之前相同名称的Bean，因为这个地方registerClientConfiguration会重复定义Bean，建议根据情况配置，笔者这里的业务默认都打开了的，毕竟我们的FeignClient配置是一样的，所以允许重复定义。</p> <hr/> <blockquote> <p>已经讲解到这里了，这一节我们通过路径覆盖大法，重写老版本的netflix.FeignClient注解在其之上加上新版本的openfeign.FeignClient注解来实现兼容，下一节我们将通过继承FeignClientsRegistrar来实现的方式，这种方式的实现能让我们更加清楚的了解到@FeignClient的注册方式，如果觉得总结不错就点赞关注吧！</p> </blockquote> <p> 原文链接：https://www.jianshu.com/p/e319a7a550a2</p> <p>相关资源：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.dcsdn.com/doc/do-7777"  title="GitOps 初探 - Dcsdn" rel="nofollow">GitOps 初探 - Dcsdn</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.dcsdn.com/doc/do-7778"  title="行业分类-设备装置-一种用于数据库运维的移动平台及其使用方法 - Dcsdn" rel="nofollow">行业分类-设备装置-一种用于数据库运维的移动平台及其使用方法 - Dcsdn</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.dcsdn.com/doc/do-7775"  title="redis（哨兵模式配置） - Dcsdn" rel="nofollow">redis（哨兵模式配置） - Dcsdn</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.dcsdn.com/doc/d-7766"  title="Redis数据的导出和导入 - Dcsdn" rel="nofollow">Redis数据的导出和导入 - Dcsdn</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-62685.htm">如何使用Iintelij IDEA将maven项目打包成war包，并将war包放到tomcat上运行</a></p>
+                                        <p>下一个：<a href="/news/article-63281.htm">宠物粮食价格高对策论文（宠物粮食问题）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-high-speed-nodes.htm" title="1月1日→18M/S|2025年最新免费节点Clash Node订阅链接地址">1月1日→18M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-subscribe-node.htm" title="1月10日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址">1月10日→20.3M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44926.htm" title="青岛市宠物医院电话（青岛宠物医院价格表）">青岛市宠物医院电话（青岛宠物医院价格表）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-node-subscribe.htm" title="2月13日→21.6M/S|2025年最新免费节点Clash Node订阅链接地址">2月13日→21.6M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19202.htm" title="2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）">2021年国考公务员考试报名时间（2022年国考公务员考试报名时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-free-node-subscribe.htm" title="1月20日→21.3M/S|2025年最新免费节点Clash Node订阅链接地址">1月20日→21.3M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-33658.htm" title="中国农大动物医院怎么挂号（中国农业大学动物医院预约挂号验证码）">中国农大动物医院怎么挂号（中国农业大学动物医院预约挂号验证码）</a></li>
+                        <li class="py-2"><a href="/news/article-21500.htm" title="动物医院取什么名字好听一点（动物医院牌子）">动物医院取什么名字好听一点（动物医院牌子）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-subscribe-node.htm" title="1月6日→21M/S|2025年最新免费节点Clash Node订阅链接地址">1月6日→21M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-39489.htm" title="python实现tcp/ip通信">python实现tcp/ip通信</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
