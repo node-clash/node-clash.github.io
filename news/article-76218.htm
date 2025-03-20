@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-76218.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型</title>
+        <meta name="description" content="一、返回一般数据类型 &nbsp; &nbsp; &nbsp; &nbsp; 此实列总代用的是string类型 列：比如我们要根据 id 属性获得数据库中的某个字段值。 mapper 接口：  &nb" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-76218.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/8cca6de523047ad98818751afb4d407d.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:12:24" />
+    <meta property="og:updated_time" content="2025-03-18T06:12:24" />
+        <meta property="og:description" content="一、返回一般数据类型 &nbsp; &nbsp; &nbsp; &nbsp; 此实列总代用的是string类型 列：比如我们要根据 id 属性获得数据库中的某个字段值。 mapper 接口：  &nb" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>一、返回一般数据类型</h2> <p>&nbsp; &nbsp; &nbsp; &nbsp; 此实列总代用的是string类型</p> <p>列：比如我们要根据 id 属性获得数据库中的某个字段值。</p> <p>mapper 接口：</p> <blockquote> <p>&nbsp; &nbsp; // 根据 id 获得数据库中的 username 字段的值<br /> &nbsp; &nbsp; String getEmpNameById(Long&nbsp;id);</p> </blockquote> <p>XML映射文件：</p> <pre><code class="language-XML">    &lt;!--  指定 resultType 返回值类型时 String 类型的，           string 在这里是一个别名，代表的是 java.lang.String          对于引用数据类型，都是将大写字母转小写，比如 HashMap 对应的别名是 'hashmap'         基本数据类型考虑到重复的问题，会在其前面加上 '_'，比如 byte 对应的别名是 '_byte'         有些时候resultType会检测不到String类型，检测不到就写全包路径 java.lang.String  --&gt;      &lt;select id="getEmpNameById" resultType="string"&gt;         select username from t_employee where id = #{id}     &lt;/select&gt; </code></pre> </h1> <p>&nbsp;好比如根据某个字段获得数据库中的信息，把查询的结果信息封装成某个 JavaBean 类型的数据。（简而言之平常使用的实体类）</p> <p>mapper 接口：</p> <blockquote> <p>// 根据 id 查询信息，并把信息封装成 User 对象<br /> User getUserID(Long id);</p> </blockquote> <pre><code class="language-XML">    &lt;!--          通过 resultType 指定查询的结果是 user类型的数据           只需要指定 resultType 的类型，MyBatis 会自动将查询的结果映射成 JavaBean 中的属性     --&gt;     &lt;select id="getUserID" resultType="user"&gt;         select * from user where id = #{id}     &lt;/select&gt; </code></pre> </h1> <p>MyBatis 还支持将查询的数据封装成Map。</p> <p>如果查询的结果是一条，我们可以把查询的数据以{表字段名， 对应的值}方式存入到Map中。</p> <p>mapper 接口：</p> <blockquote> <p>&nbsp; &nbsp; // &nbsp;根据 id 查询信息，并把结果信息封装成 Map&nbsp;<br /> &nbsp; &nbsp; Map&lt;String, Object&gt; getUserById(Long id);<br /> &nbsp;</p> </blockquote> <p>SQL 映射文件：</p> <pre><code class="language-XML">    &lt;!--          注意这里的 resultType 返回值类型是 'map'      --&gt;     &lt;select id="getUserById" resultType="map"&gt;         select * from user where id = #{id}     &lt;/select&gt; </code></pre> <h2><strong>四、返回List类型（比较常用的一种重点）</strong></h2> <p>有时候我们要查询的数据不止一条，比如：页面的模糊查询，直接展示多条表记录，这时候返回的数据可能不止是一条数据，对于多数据的处理可以存放在List集合中。</p> <p>mapper 接口：</p> <blockquote> <p>&nbsp; &nbsp; // 假如是全表查询数据，将查询的数据封装成 Employee 类型的集合<br /> &nbsp; &nbsp; List&lt;User&gt; selectAllUser();</p> </blockquote> <p>&nbsp;SQL 映射文件：</p> <pre><code class="language-XML">    &lt;!-- 注意这里的 resultType 返回值类型是集合内存储数据的类型，不是 'list' --&gt;     &lt;select id="selectAllUser" resultType="user"&gt;         select * from user     &lt;/select&gt; </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-76217.htm">哪种HTML5标签更适合表示金额</a></p>
+                                        <p>下一个：<a href="/news/article-76881.htm">MySQL必知必会</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-65121.htm" title="动物疫苗价格查询表最新版（动物疫苗接种时间表）">动物疫苗价格查询表最新版（动物疫苗接种时间表）</a></li>
+                        <li class="py-2"><a href="/news/article-50944.htm" title="宠物粮生产基地在哪里 宠物粮生产基地在哪里啊">宠物粮生产基地在哪里 宠物粮生产基地在哪里啊</a></li>
+                        <li class="py-2"><a href="/news/article-76882.htm" title="解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题">解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题</a></li>
+                        <li class="py-2"><a href="/news/article-77559.htm" title="狗粮生产机器设备有哪些牌子（狗粮生产工艺流程视频）">狗粮生产机器设备有哪些牌子（狗粮生产工艺流程视频）</a></li>
+                        <li class="py-2"><a href="/news/article-57449.htm" title="C语言实现二叉树的插入和删除">C语言实现二叉树的插入和删除</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-node-subscribe-links.htm" title="3月15日→22.6M/S|2025年最新免费节点Clash Node订阅链接地址">3月15日→22.6M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-41449.htm" title="宠物粮销售渠道（宠物粮销售好做吗）">宠物粮销售渠道（宠物粮销售好做吗）</a></li>
+                        <li class="py-2"><a href="/news/article-75529.htm" title="宠物店一袋猫粮多少钱 宠物店一袋猫粮多少钱啊">宠物店一袋猫粮多少钱 宠物店一袋猫粮多少钱啊</a></li>
+                        <li class="py-2"><a href="/news/article-38968.htm" title="动物医院公示栏设计图片高清（动物医院诊室设计图）">动物医院公示栏设计图片高清（动物医院诊室设计图）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-free-high-speed-nodes.htm" title="3月5日→22.9M/S|2025年最新免费节点Clash Node订阅链接地址">3月5日→22.9M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
