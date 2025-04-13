@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-94272.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue的自定义拖动</title>
+        <meta name="description" content="directives: {     drag (el, binding, vnode) {       /**        * 获取客户端可见内容的高度        *        * @ret" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-94272.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Vue的自定义拖动" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/be962a4fbbd25f3d580fd96ed81ce18e.webp" />
+        <meta property="og:release_date" content="2025-04-12T08:58:10" />
+    <meta property="og:updated_time" content="2025-04-12T08:58:10" />
+        <meta property="og:description" content="directives: {     drag (el, binding, vnode) {       /**        * 获取客户端可见内容的高度        *        * @ret" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue的自定义拖动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">Vue的自定义拖动</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <pre><code>  directives: {     drag (el, binding, vnode) {       /**        * 获取客户端可见内容的高度        *        * @returns {number}        */       const getClientHeight = () =&gt; {         return window.innerHeight || Math.min(document.documentElement.clientHeight, document.body.clientHeight)       }       /**        * 获取客户端可见内容的宽度        *        * @returns {number}        */       const getClientWidth = () =&gt; {         return window.innerWidth || Math.min(document.documentElement.clientWidth, document.body.clientWidth)       }       /**        * startX = null:获取鼠标相对于元素（左上顶点）的x轴坐标（移动前坐标）        * startX != null:获取移动后的左上顶点x轴坐标        *        * e.clientX:鼠标相对客户端（客户端左上顶点）的x轴坐标        * el.offsetLeft:元素顶点（左上顶点）相对客户端（客户端左上顶点）的x轴坐标（元素必须脱离文档流，position: fixed or absolute）        * el.clientWidth:元素宽度        *        * @param el        * @param e        * @param startX        * @returns {number}        */       const getX = (el, e, startX) =&gt; {         if (startX === null) {           // 返回鼠标相对于元素（左上顶点）的x轴坐标           return e.clientX - el.offsetLeft         }         // 客户端可视宽度         const clientWidth = getClientWidth()         // 元素自身宽度         const elWidth = el.clientWidth         // 移动到x轴位置         let x = e.clientX - startX         // 水平方向边界处理         if (x &lt;= 0) {           // x轴最小为0           x = 0         } else if (x + elWidth &gt; clientWidth) {           // x是左上顶点的坐标，是否触碰到右边边界（超出可视宽度）要通过右顶点判断，所以需要加上元素自身宽度           x = clientWidth - elWidth         }         return x       }       /**        * startY = null:获取鼠标相对于元素（左上顶点）的y轴坐标（移动前坐标）        * startY != null:获取移动后的左上顶点y轴坐标        *        * e.clientY:鼠标相对客户端（客户端左上顶点）的y轴坐标        * el.offsetTop:元素顶点（左上顶点）相对客户端（客户端左上顶点）的y轴坐标（元素必须脱离文档流，position: fixed or absolute）        * el.clientHeight:元素高度        *        * @param el        * @param e        * @param startY        * @returns {number}        */       const getY = (el, e, startY) =&gt; {         if (startY === null) {           // 返回鼠标相对于元素（左上顶点）的y轴坐标           return e.clientY - el.offsetTop         }         // 客户端可视高度         const clientHeight = getClientHeight()         // 元素自身高度         const elHeight = el.clientHeight         // 移动到y轴位置         let y = e.clientY - startY         // 垂直方向边界处理         if (y &lt;= 0) {           // y轴最小为0           y = 0         } else if (y + elHeight &gt; clientHeight) {           // 同理，判断是否超出可视高度要加上自身高度           y = clientHeight - elHeight         }         return y       }       /**        * 监听鼠标按下事件（PC端拖动）        *        * @param e        */       el.onmousedown = (e) =&gt; {         vnode.context.isDrag = false         // 获取当前位置信息 (startX,startY)         const startX = getX(el, e, null)         const startY = getY(el, e, null)         /**          * 监听鼠标移动事件          *          * @param e          */         document.onmousemove = (e) =&gt; {           // 标记正在移动，解决元素移动后点击事件被触发的问题           vnode.context.isDrag = true           // 更新元素位置（移动元素）           el.style.left = getX(el, e, startX) + 'px'           el.style.top = getY(el, e, startY) + 'px'         }         /**          * 监听鼠标松开事件          */         document.onmouseup = () =&gt; {           // 移除鼠标相关事件，防止元素无法脱离鼠标           document.onmousemove = document.onmouseup = null         }       }       /**        * 监听手指按下事件（移动端拖动）        * @param e        */       el.ontouchstart = (e) =&gt; {         // 获取被触摸的元素         const touch = e.targetTouches[0]         // 获取当前位置信息 (startX,startY)         const startX = getX(el, touch, null)         const startY = getY(el, touch, null)         /**          * 监听手指移动事件          * @param e          */         document.ontouchmove = (e) =&gt; {           // 获取被触摸的元素           const touch = e.targetTouches[0]           // 更新元素位置（移动元素）           el.style.left = getX(el, touch, startX) + 'px'           el.style.top = getY(el, touch, startY) + 'px'         }         /**          * 监听手指移开事件          */         document.ontouchend = () =&gt; {           // 移除touch相关事件，防止元素无法脱离手指           document.ontouchmove = document.ontouchend = null         }       }     }   }, </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93329.htm">上海宠物领养救助站是真的吗（上海宠物领养机构）</a></p>
+                                        <p>下一个：<a href="/news/article-94273.htm">vue 动态样式绑定</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-85247.htm" title="让猫挠了出血过了24小时有事吗会感染吗会传染吗（被猫挠出血了过24小时了）">让猫挠了出血过了24小时有事吗会感染吗会传染吗（被猫挠出血了过24小时了）</a></li>
+                        <li class="py-2"><a href="/news/article-93329.htm" title="上海宠物领养救助站是真的吗（上海宠物领养机构）">上海宠物领养救助站是真的吗（上海宠物领养机构）</a></li>
+                        <li class="py-2"><a href="/news/article-71535.htm" title="自家猫抓伤了表皮出了一点血怎么办（自家的猫抓伤）">自家猫抓伤了表皮出了一点血怎么办（自家的猫抓伤）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-node-share.htm" title="3月2日→20.1M/S|2025年最新免费节点Clash Node订阅链接地址">3月2日→20.1M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76882.htm" title="解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题">解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-node-subscribe.htm" title="3月10日→19.3M/S|2025年最新免费节点Clash Node订阅链接地址">3月10日→19.3M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-free-node-subscribe.htm" title="3月13日→19.1M/S|2025年最新免费节点Clash Node订阅链接地址">3月13日→19.1M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-92577.htm" title="狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）">狗咬了多久过安全期没有打针（狗咬了多久过安全期没有打针了）</a></li>
+                        <li class="py-2"><a href="/news/article-94846.htm" title="python调用c代码">python调用c代码</a></li>
+                        <li class="py-2"><a href="/news/article-82401.htm" title="广州狗粮猫粮批发市场地址（广州哪里有狗粮卖）">广州狗粮猫粮批发市场地址（广州哪里有狗粮卖）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
