@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://node-clash.github.io/news/article-103018.htm" />
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(摄取、修改数据 DML)</title>
+        <meta name="description" content="插入数据 要将数据插入分布式表，您可以使用标准PostgreSQLINSERT 命令。例如，我们从Github 存档数据集中随机选择两行。  INSERT  http://www.postgresql" />
+        <link rel="icon" href="/assets/website/img/node_clash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Node机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://node-clash.github.io/news/article-103018.htm" />
+    <meta property="og:site_name" content="Clash Node机场节点分享官网" />
+    <meta property="og:title" content="Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(摄取、修改数据 DML)" />
+    <meta property="og:image" content="https://node-clash.github.io/uploads/20240909-1/74ff8bede5d57990b69de6dd4d998945.webp" />
+        <meta property="og:release_date" content="2025-04-24T09:16:53" />
+    <meta property="og:updated_time" content="2025-04-24T09:16:53" />
+        <meta property="og:description" content="插入数据 要将数据插入分布式表，您可以使用标准PostgreSQLINSERT 命令。例如，我们从Github 存档数据集中随机选择两行。  INSERT  http://www.postgresql" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(摄取、修改数据 DML)">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/website/css/node_clash/animate.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/slick.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="/assets/website/css/node_clash/style.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTZXQP7KV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FTZXQP7KV5');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Preloader Starts -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Section Starts -->
+    <header class="cropium-header-section fixed-navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Navbar Starts -->
+                    <nav class="navbar navbar-area navbar-expand-lg nav-style-02 nav-absolute">
+                        <div class="container nav-container">
+                            <div class="responsive-mobile-menu">
+                                <div class="logo-wrapper">
+                                    <a href="/" class="logo">
+                                                                        <span>Node Clash</span>
+                                                                        </a>
+                                </div>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cropium-main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                    <span class="toggle-icon"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse" id="cropium-main-menu">
+                                <ul class="navbar-nav">
+                                                                        <li>
+                                        <a href="/">首页</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/free-nodes/">免费节点</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/paid-subscribe/">推荐机场</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/client.htm">客户端</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="/news/">新闻资讯</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar End -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb Area Starts -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="title">Citus 分布式 PostgreSQL 集群 &#8211; SQL Reference(摄取、修改数据 DML)</h1>
+                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> <span> / 正文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section Starts -->
+    <section class="cropium-about-section padding-top-90 padding-bottom-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f84e34044001733c499d5eea5c78c3d1.jpg" alt="Citus 分布式 PostgreSQL 集群 - SQL Reference(摄取、修改数据 DML)"></p> <h2 id="插入数据">插入数据</h2> <p>要将数据插入分布式表，您可以使用标准<code>PostgreSQL</code>INSERT 命令。例如，我们从<code>Github</code> 存档数据集中随机选择两行。</p> <ul> <li><small>INSERT</small> <ul> <li><small>http://www.postgresql.org/docs/current/static/sql-insert.html</small></li> </ul> </li> </ul> <pre><code class="language-sql">/* CREATE TABLE github_events (   event_id bigint,   event_type text,   event_public boolean,   repo_id bigint,   payload jsonb,   repo jsonb,   actor jsonb,   org jsonb,   created_at timestamp ); */  INSERT INTO github_events VALUES (2489373118,'PublicEvent','t',24509048,'{}','{"id": 24509048, "url": "https://api.github.com/repos/SabinaS/csee6868", "name": "SabinaS/csee6868"}','{"id": 2955009, "url": "https://api.github.com/users/SabinaS", "login": "SabinaS", "avatar_url": "https://avatars.githubusercontent.com/u/2955009?", "gravatar_id": ""}',NULL,'2015-01-01 00:09:13');  INSERT INTO github_events VALUES (2489368389,'WatchEvent','t',28229924,'{"action": "started"}','{"id": 28229924, "url": "https://api.github.com/repos/inf0rmer/blanket", "name": "inf0rmer/blanket"}','{"id": 1405427, "url": "https://api.github.com/users/tategakibunko", "login": "tategakibunko", "avatar_url": "https://avatars.githubusercontent.com/u/1405427?", "gravatar_id": ""}',NULL,'2015-01-01 00:00:24');</code></pre> <p>向分布式表中插入行时，必须指定插入行的分布列。根据分布列，<code>Citus</code> 确定插入应该路由到的正确分片。 然后，查询被转发到正确的分片，并在该分片的所有副本上执行远程插入命令。</p> <p>有时将多个<code>insert</code> 语句放在一个包含多行的单个<code>insert</code> 中会很方便。 它也比重复数据库查询更有效。 例如，上一节中的示例可以像这样一次性加载：</p> <pre><code class="language-sql">INSERT INTO github_events VALUES   (     2489373118,'PublicEvent','t',24509048,'{}','{"id": 24509048, "url": "https://api.github.com/repos/SabinaS/csee6868", "name": "SabinaS/csee6868"}','{"id": 2955009, "url": "https://api.github.com/users/SabinaS", "login": "SabinaS", "avatar_url": "https://avatars.githubusercontent.com/u/2955009?", "gravatar_id": ""}',NULL,'2015-01-01 00:09:13'   ), (     2489368389,'WatchEvent','t',28229924,'{"action": "started"}','{"id": 28229924, "url": "https://api.github.com/repos/inf0rmer/blanket", "name": "inf0rmer/blanket"}','{"id": 1405427, "url": "https://api.github.com/users/tategakibunko", "login": "tategakibunko", "avatar_url": "https://avatars.githubusercontent.com/u/1405427?", "gravatar_id": ""}',NULL,'2015-01-01 00:00:24'   );</code></pre> <h3 id="from-select子句分布式汇总">“From Select”子句（分布式汇总）</h3> <p><code>Citus</code> 还支持<code>INSERT ... SELECT</code> 语句 —— 根据选择查询的结果插入行。这是一种方便的填充表的方法，并且还允许使用<code>ON CONFLICT</code> 子句进行<code>“更新插入(upserts)”</code>，这是进行分布式汇总的最简单方法。</p> <ul> <li><small>分布式汇总</small> <ul> <li><small>https://docs.citusdata.com/en/v11.0-beta/develop/reference_dml.html#rollups</small></li> </ul> </li> </ul> <p>在<code>Citus</code> 中，可以通过三种方式从<code>select</code> 语句中插入。第一个是如果源表和目标表位于同一位置，并且<code>select/insert</code> 语句都包含分布列。在这种情况下，<code>Citus</code> 可以将<code>INSERT ... SELECT</code> 语句下推以在所有节点上并行执行。</p> <p>当<code>SELECT</code> 查询不需要协调器上的合并步骤时，可能会发生重新分区优化。它不适用于以下需要合并步骤的<code>SQL</code> 功能：</p> <ul> <li><code>ORDER BY</code></li> <li><code>LIMIT</code></li> <li><code>OFFSET</code></li> <li><code>GROUP BY</code> 当分布列不是<code>group</code> 键的一部分时</li> <li>按源表中的非分布列分区时的<code>Window(窗口)</code>函数</li> <li>非同位表之间的<code>Join(连接)</code>（即重新分区连接）</li> </ul> <p>当源表和目标表没有在同一位置，并且无法应用重新分区优化时，<code>Citus</code> 使用第三种方式执行<code>INSERT ... SELECT</code>。 它从工作节点中选择结果，并将数据拉到协调节点。协调器将行重定向回适当的分片。 因为所有数据都必须通过单个节点，所以这种方法效率不高。</p> <p>如果对<code>Citus</code> 使用哪种方法有疑问，请使用<code>EXPLAIN</code> 命令，如<code>PostgreSQL</code> 调优中所述。 当目标表的分片数量非常大时，禁用重新分区可能是明智之举，<br /> 请参阅citus.enable_repartitioned_insert_select (boolean)。</p> <ul> <li><small>PostgreSQL 调优</small> <ul> <li><small>https://docs.citusdata.com/en/v11.0-beta/performance/performance_tuning.html#postgresql-tuning</small></li> </ul> </li> <li><small>citus.enable_repartitioned_insert_select (boolean)</small> <ul> <li><small>https://docs.citusdata.com/en/v11.0-beta/develop/api_guc.html#enable-repartitioned-insert-select</small></li> </ul> </li> </ul> <h3 id="copy-命令批量加载">COPY 命令（批量加载）</h3> <p>要从文件中批量加载数据，您可以直接使用<code>PostgreSQL</code> 的<code>\COPY</code> 命令。</p> <p>首先通过运行下载我们的示例<code>github_events</code> 数据集：</p> <pre><code class="language-sh">wget http://examples.citusdata.com/github_archive/github_events-2015-01-01-{0..5}.csv.gz gzip -d github_events-2015-01-01-*.gz</code></pre> <p>然后，您可以使用<code>psql</code> 复制数据（注意，此数据需要数据库具有<code>UTF8</code> 编码）：</p> <pre><code class="language-sh">\COPY github_events FROM 'github_events-2015-01-01-0.csv' WITH (format CSV)</code></pre> <blockquote> <p>注意:</p> <p><small></small></p> <p>没有跨分片的快照隔离的概念，这意味着与<code>COPY</code> 并发运行的多分片<code>SELECT</code> 可能会看到它在某些分片上提交，但在其他分片上没有。<br /> 如果用户正在存储事件数据，他可能偶尔会观察到最近数据中的小间隙。 如果这是一个问题，则由应用程序来处理（例如，从查询中排除最新数据，或使用一些锁）。</p> <p>如果<code>COPY</code> 未能打开分片放置的连接，那么它的行为方式与<code>INSERT</code> 相同，即将放置标记为非活动，除非没有更多活动的放置。 如果连接后发生任何其他故障，事务将回滚，因此不会更改元数据。</p> </blockquote> <h3 id="使用汇总缓存聚合">使用汇总缓存聚合</h3> <p>事件数据管道和实时仪表板等应用程序需要对大量数据进行亚秒级查询。使这些查询快速的一种方法是提前计算和保存聚合。 这称为“汇总”数据，它避免了在运行时处理原始数据的成本。 作为一个额外的好处，将时间序列数据汇总到每小时或每天的统计数据中也可以节省空间。 当不再需要其全部详细信息并且聚合足够时，可能会删除旧数据。</p> <p>例如，这是一个通过<code>url</code> 跟踪页面浏览量的分布式表：</p> <pre><code class="language-sql">CREATE TABLE page_views (   site_id int,   url text,   host_ip inet,   view_time timestamp default now(),    PRIMARY KEY (site_id, url) );  SELECT create_distributed_table('page_views', 'site_id');</code></pre> <p>一旦表中填充了数据，我们就可以运行聚合查询来计算每个<code>URL</code> 每天的页面浏览量，限制到给定的站点和年份。</p> <pre><code class="language-sql">-- how many views per url per day on site 5? SELECT view_time::date AS day, site_id, url, count(*) AS view_count   FROM page_views   WHERE site_id = 5 AND     view_time &gt;= date '2016-01-01' AND view_time &lt; date '2017-01-01'   GROUP BY view_time::date, site_id, url;</code></pre> <p>上述设置有效，但有两个缺点。首先，当您重复执行聚合查询时，它必须遍历每个相关行并重新计算整个数据集的结果。 如果您使用此查询来呈现仪表板，则将聚合结果保存在每日页面浏览量表中并查询该表会更快。 其次，存储成本将随着数据量和可查询历史的长度成比例增长。 在实践中，您可能希望在短时间内保留原始事件并查看较长时间窗口内的历史图表。</p> <p>为了获得这些好处，我们可以创建一个<code>daily_page_views</code> 表来存储每日统计信息。</p> <pre><code class="language-sql">CREATE TABLE daily_page_views (   site_id int,   day date,   url text,   view_count bigint,   PRIMARY KEY (site_id, day, url) );  SELECT create_distributed_table('daily_page_views', 'site_id');</code></pre> <p>在此示例中，我们在<code>site_id</code> 列上同时分配了<code>page_views</code> 和<code>daily_page_views</code>。 这确保了与特定站点相对应的数据将位于同一节点上。 在每个节点上将两个表的行保持在一起可以最大限度地减少节点之间的网络流量并实现高度并行执行。</p> <p>一旦我们创建了这个新的分布式表，我们就可以运行<code>INSERT INTO ... SELECT</code> 将原始页面视图汇总到聚合表中。 在下文中，我们每天汇总页面浏览量。<code>Citus</code> 用户通常在一天结束后等待一段时间来运行这样的查询，以容纳迟到的数据。</p> <pre><code class="language-sql">-- roll up yesterday's data INSERT INTO daily_page_views (day, site_id, url, view_count)   SELECT view_time::date AS day, site_id, url, count(*) AS view_count   FROM page_views   WHERE view_time &gt;= date '2017-01-01' AND view_time &lt; date '2017-01-02'   GROUP BY view_time::date, site_id, url;  -- now the results are available right out of the table SELECT day, site_id, url, view_count   FROM daily_page_views   WHERE site_id = 5 AND     day &gt;= date '2016-01-01' AND day &lt; date '2017-01-01';</code></pre> <p>上面的汇总查询汇总了前一天的数据并将其插入<code>daily_page_views</code>。 每天运行一次查询意味着不需要更新汇总表行，因为新一天的数据不会影响之前的行。</p> <p>当处理迟到的数据或每天多次运行汇总查询时，情况会发生变化。<br /> 如果任何新行与汇总表中已有的天数匹配，则匹配计数应增加。<br /><code>PostgreSQL</code> 可以使用<code>“ON CONFLICT”</code> 来处理这种情况，<br /> 这是它进行<code>upserts</code> 的技术。 这是一个例子。</p> <ul> <li><small>upserts</small> <ul> <li><small>https://www.postgresql.org/docs/current/static/sql-insert.html#SQL-ON-CONFLICT</small></li> </ul> </li> </ul> <pre><code class="language-sql">-- roll up from a given date onward, -- updating daily page views when necessary INSERT INTO daily_page_views (day, site_id, url, view_count)   SELECT view_time::date AS day, site_id, url, count(*) AS view_count   FROM page_views   WHERE view_time &gt;= date '2017-01-01'   GROUP BY view_time::date, site_id, url   ON CONFLICT (day, url, site_id) DO UPDATE SET     view_count = daily_page_views.view_count + EXCLUDED.view_count;</code></pre> <h3 id="更新和删除">更新和删除</h3> <p>您可以使用标准<code>PostgreSQL</code>UPDATE 和DELETE 命令更新或删除分布式表中的行。</p> <pre><code class="language-sql">DELETE FROM github_events WHERE repo_id IN (24509048, 24509049);  UPDATE github_events SET event_public = TRUE WHERE (org-&gt;&gt;'id')::int = 5430905;</code></pre> <ul> <li><small>UPDATE</small> <ul> <li><small>http://www.postgresql.org/docs/current/static/sql-update.html</small></li> </ul> </li> <li><small>DELETE</small> <ul> <li><small>http://www.postgresql.org/docs/current/static/sql-delete.html</small></li> </ul> </li> </ul> <p>当<code>更新/删除</code>影响如上例中的多个分片时，<code>Citus</code> 默认使用单阶段提交协议。<br /> 为了提高安全性，您可以通过设置启用两阶段提交</p> <pre><code class="language-sql">SET citus.multi_shard_commit_protocol = '2pc';</code></pre> <p>如果更新或删除仅影响单个分片，则它在单个工作节点内运行。在这种情况下，不需要启用<code>2PC</code>。 当按表的分布列更新或删除过滤器时，通常会发生这种情况：</p> <pre><code class="language-sql">-- since github_events is distributed by repo_id, -- this will execute in a single worker node  DELETE FROM github_events WHERE repo_id = 206084;</code></pre> <p>此外，在处理单个分片时，<code>Citus</code> 支持<code>SELECT ... FOR UPDATE</code>。这是对象关系映射器 (<code>ORM</code>) 有时使用的一种技术，用于安全地：</p> <ol> <li>加载行</li> <li>在应用程序代码中进行计算</li> <li>根据计算更新行</li> </ol> <p>选择要更新的行会对它们设置写锁定，以防止其他进程导致<code>“丢失更新(lost update)”</code>异常。</p> <pre><code class="language-sql">BEGIN;    -- select events for a repo, but   -- lock them for writing   SELECT *   FROM github_events   WHERE repo_id = 206084   FOR UPDATE;    -- calculate a desired value event_public using   -- application logic that uses those rows...    -- now make the update   UPDATE github_events   SET event_public = :our_new_value   WHERE repo_id = 206084;  COMMIT;</code></pre> <p>仅哈希分布表和引用表支持此功能，并且仅那些具有<code>replication_factor</code> 为<code>1</code> 的表支持。</p> <ul> <li><small>replication_factor</small> <ul> <li><small>https://docs.citusdata.com/en/v11.0-beta/develop/api_guc.html#replication-factor</small></li> </ul> </li> </ul> <h3 id="最大化写入性能">最大化写入性能</h3> <p>在大型机器上，<code>INSERT</code> 和<code>UPDATE/DELETE</code> 语句都可以扩展到每秒约<code>50,000</code> 个查询。 但是，要达到这个速度，您将需要使用许多并行的、长期存在的连接并考虑如何处理锁定。 有关更多信息，您可以查阅我们文档的横向扩展数据摄取部分。</p> <ul> <li><small>横向扩展数据摄取</small> <ul> <li><small>https://docs.citusdata.com/en/v11.0-beta/performance/performance_tuning.html#scaling-data-ingestion</small></li> </ul> </li> </ul> <h2 id="更多">更多</h2> <p>Citus 分布式 PostgreSQL 集群 - SQL Reference(创建和修改分布式表 DDL)</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102207.htm">人和动物的狂犬疫苗是一样的吗（人和动物的狂犬疫苗是一样的吗图片）</a></p>
+                                        <p>下一个：<a href="/news/article-103021.htm">重庆宠物领养中心官网地址在哪里（重庆宠物领养中心官网地址在哪里呀）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-68925.htm" title="动物疫苗的使用方法及注意事项视频教学大全图片（动物接种疫苗）">动物疫苗的使用方法及注意事项视频教学大全图片（动物接种疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-94846.htm" title="python调用c代码">python调用c代码</a></li>
+                        <li class="py-2"><a href="/news/article-100053.htm" title="宠物美容师要培训多久（宠物美容师要培训多久才能考证）">宠物美容师要培训多久（宠物美容师要培训多久才能考证）</a></li>
+                        <li class="py-2"><a href="/news/article-86676.htm" title="宠物粮十大品牌有哪些名字（宠物粮十大品牌有哪些名字呢）">宠物粮十大品牌有哪些名字（宠物粮十大品牌有哪些名字呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-node-share.htm" title="4月15日→20.5M/S|2025年最新免费节点Clash Node订阅链接地址">4月15日→20.5M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-free-node-subscribe-links.htm" title="4月17日→22.8M/S|2025年最新免费节点Clash Node订阅链接地址">4月17日→22.8M/S|2025年最新免费节点Clash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-100754.htm" title="去哪领养宠物狗（去哪可以领养宠物狗）">去哪领养宠物狗（去哪可以领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/news/article-81686.htm" title="win11系统怎么禁用Superfetch服务">win11系统怎么禁用Superfetch服务</a></li>
+                        <li class="py-2"><a href="/news/article-76881.htm" title="MySQL必知必会">MySQL必知必会</a></li>
+                        <li class="py-2"><a href="/news/article-76218.htm" title="Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型">Jav详细介绍的Mapper对应的Mybatis xml查询结果resultType返回值类型</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">76</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Footer Section Starts -->
+    <footer class="footer-section common-footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-logo">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">Clash Node机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Javascript Files -->
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/slick.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/counterup.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/waypoints.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.magnific-popup.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/jquery.lineProgressbar.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/lineProgressbarActivate.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/easing.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/vendor/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/node_clash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
