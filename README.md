@@ -1,4 +1,4 @@
-# 5月24日→22.3M/S|2025年最新免费节点Clash Node订阅链接地址  更新时间 2025-05-24 09:58:04
+# 5月29日→18.3M/S|2025年最新免费节点Clash Node订阅链接地址  更新时间 2025-05-29 09:40:32
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://node-clash.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://node-clash.github.io/uploads/2025/05/0-20250524.yaml
-- https://node-clash.github.io/uploads/2025/05/1-20250524.yaml
-- https://node-clash.github.io/uploads/2025/05/2-20250524.yaml
-- https://node-clash.github.io/uploads/2025/05/3-20250524.yaml
-- https://node-clash.github.io/uploads/2025/05/4-20250524.yaml
+- https://node-clash.github.io/uploads/2025/05/0-20250529.yaml
+- https://node-clash.github.io/uploads/2025/05/1-20250529.yaml
+- https://node-clash.github.io/uploads/2025/05/2-20250529.yaml
+- https://node-clash.github.io/uploads/2025/05/3-20250529.yaml
+- https://node-clash.github.io/uploads/2025/05/4-20250529.yaml
 
 ### V2ray订阅链接
 
-- https://node-clash.github.io/uploads/2025/05/0-20250524.txt
-- https://node-clash.github.io/uploads/2025/05/1-20250524.txt
-- https://node-clash.github.io/uploads/2025/05/2-20250524.txt
-- https://node-clash.github.io/uploads/2025/05/3-20250524.txt
-- https://node-clash.github.io/uploads/2025/05/4-20250524.txt
+- https://node-clash.github.io/uploads/2025/05/0-20250529.txt
+- https://node-clash.github.io/uploads/2025/05/1-20250529.txt
+- https://node-clash.github.io/uploads/2025/05/2-20250529.txt
+- https://node-clash.github.io/uploads/2025/05/3-20250529.txt
+- https://node-clash.github.io/uploads/2025/05/4-20250529.txt
 
 ### Sing-box订阅链接
 
-- https://node-clash.github.io/uploads/2025/05/20250524.json
+- https://node-clash.github.io/uploads/2025/05/20250529.json
 
 ## 更多clash节点订阅 ：
 
